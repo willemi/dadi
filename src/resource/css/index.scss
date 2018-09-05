@@ -1,0 +1,30 @@
+@import './common.scss';
+.content-wrapper {
+	.row {
+		margin:0;
+		background-color:#fff;
+		padding:10px;
+		.panel {
+			margin:0;
+			.panel-body {
+				height:300px;
+				padding:0 10px 10px;
+			}
+		}
+			
+	}
+	.table-responsive {
+		margin-top:20px;
+		padding:10px;
+		background:#fff;
+		h3 {
+			width:100%;
+			font: 16px/40px "\5FAE\8F6F\96C5\9ED1";
+			a {
+				float:right;
+
+			}
+		}
+	}
+
+}

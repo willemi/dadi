@@ -1,0 +1,30 @@
+// @import './common.scss';
+.row-title {
+    line-height: 34px;
+    background-color: #fff;
+    padding:10px 0;
+    h6 {
+        padding:0 10px;
+        float:left;
+        line-height: 34px;
+    }
+    ul {
+        float:right;
+        width:130px;
+        li {
+            width:33.33%;
+            float:left;
+            text-align: center;
+            color:#4B70C1;
+            cursor: pointer;
+        }
+    }
+    .input-group {
+        width:1%;
+        min-width: auto!important;
+        input[type="text"] {
+           width:210px!important;
+           min-width: auto!important;
+       }
+    }
+}

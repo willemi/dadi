@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<meta name="keyword" content="">
+	<title>大地-系统操作日志</title>
+</head>
+<body>
+<!--header start-->
+<div id="header" class="header">
+	<div class="container-fluid"></div>
+</div>
+<!--header end-->
+<!--sidebar start-->
+<aside class="main-sidebar">
+    <section  class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="header">大地后台管理系统</li>
+            <li class="" style="display: block"><a href="index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
+            <li class="treeview">
+                <a href="javascript:;"> <i class="fa fa-file-powerpoint-o"></i> <span>著作权管理</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+					<li id="1" class="c-1 li-hide">
+                        <a href="javascript:;"><i class="fa fa-credit-card"></i>作品信息管理<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+							<li class=""><a href="works-music.html"><i class="fa fa-edit"></i>音乐作品</a></li>
+							<li class=""><a href="works-fineArts.html"><i class="fa fa-edit"></i>美术作品</a></li>
+							<li class=""><a href="works-words.html"><i class="fa fa-edit"></i>文字作品</a></li>
+							<li class=""><a href="works-theatre.html"><i class="fa fa-edit"></i>戏剧作品</a></li>
+							<li class=""><a href="works-movies.html"><i class="fa fa-edit"></i>影视动画作品</a></li>
+                        </ul>
+                    </li>
+					<li id="2" class="c-2 li-hide"><a href="produc-management.html"><i class="fa fa-credit-card"></i>产品信息管理</a></li>
+                </ul>
+            </li>
+            <li id="4" class="c-4"><a href="trademark-management.html"><i class="fa fa-edit"></i> <span>商标信息管理</span></a></li>
+            <li id="5" class="c-5"><a href="patent-management.html"><i class="fa fa-edit"></i> <span>专利信息管理</span></a> </li>
+            <li id="6" class="c-6"><a href="field-management.html"><i class="fa fa-edit"></i> <span>域名信息管理</span></a> </li>
+            <li id="3" class="c-3"><a href="contract-management.html"><i class="fa fa-clipboard"></i> <span>合同信息管理</span></a></li>
+            <li class="treeview c-7" id="7">
+                <a href="javascript:;"><i class="fa fa-file-powerpoint-o"></i> <span>查询统计中心</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+					<li class=""><a href="works-search.html"><i class="fa fa-search-plus"></i>作品信息查询统计</a></li>
+                    <li class=""><a href="contract-search.html"><i class="fa fa-search-plus"></i>合同信息查询统计</a></li>
+                    <li class=""><a href="produc-search.html"><i class="fa fa-search-plus"></i>产品信息查询统计</a></li>
+                </ul>
+            </li>
+            <li class="treeview c-12 active" id="12">
+                <a href="javascript:;"> <i class="fa fa-cogs"></i> <span>系统管理</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu active">
+                    <li  id="8" class="c-8 li-hide"><a href="system-dictionaries.html"><i class="fa fa-gear "></i>基础字典设置</a></li>
+                    <li  class="li-hide"><a href="system-right.html"><i class="fa fa-gear "></i>权利信息设置</a></li>
+                    <li  id="9" class="c-9 li-hide"><a href="system-data.html"><i class="fa fa-gear "></i>权利数据设置</a></li>
+                    <li  id="10" class="c-10 li-hide"><a href="system-user.html"><i class="fa fa-gear "></i>用户信息设置</a></li>
+                    <li  id="11" class="c-11 li-hide"><a href="system-Jurisdiction.html"><i class="fa fa-gear "></i>权限信息设置</a></li>
+                    <li  id="12" class="c-12 li-hide active"><a href="system-Journal.html"><i class="fa fa-gear "></i>系统操作日志</a></li>
+                    <li  id="13" class="c-13 li-hide"><a href="system-process.html"><i class="fa fa-gear "></i>流程管理</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<div class="messages"></div>
+<dl class="user">
+    <!-- <dt class="name">汪</dt> -->
+    <dd class="out">[退出]</dd>
+</dl>
+<!--sidbar end-->
+<!--cont start-->
+<div id="content" class="content">
+	<div class="content-wrapper">
+        <h3>大地传播</h3>
+		<div class="title-h3"><h3>系统操作日志</h3></div>
+		<div class="journal-list">
+			<table class="table table-striped">
+                <thead>
+                    <tr>
+                        <th>序号</th>                        
+                        <th>操作人用户名</th>
+                        <th>功能模块</th>
+                        <th>创建时间</th>
+                        <th>操作类型</th>
+                    </tr>
+                </thead>
+                <tbody class="tabel-cont" id="works-list">
+                       
+                </tbody>
+            </table>
+			<div id="example" class="example">
+				<ul id="pageLimit"></ul>
+			</div>
+		</div>
+    </div>
+</div>
+</body>
+</html>

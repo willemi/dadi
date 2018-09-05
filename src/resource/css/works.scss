@@ -1,0 +1,298 @@
+ @import './common.scss';
+@import './easy-upload.scss';
+/* 清除浮动 */
+.clearfix { zoom: 1; }
+.clearfix:after { content: ""; display: block; clear: both; height: 0; visibility: hidden; }
+.content {
+	.content-wrapper {	
+		textarea.form-control {
+			width: 83%;
+		}
+        .right, .copyright {
+           display:none;
+		}	
+		.select-div {
+			position: absolute;
+			left:105px;
+			top:36px;
+			background-color: #fff;
+			z-index: 9;
+			width:50%;
+			border: 1px solid rgba(0, 0, 0, .15);
+			border-radius: 4px;
+			-webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+			box-shadow: 0 6px 12px rgba(0, 0, 0, .175);
+			padding:10px;
+			display: none;
+			ul {
+				margin:0;
+				li {
+					padding-left:5px;
+					cursor: pointer;
+					&:hover {
+						background-color: #eee
+					}
+				}
+			}
+		}
+		.button-mt0 button {
+			margin-top:0!important;
+		}
+        .right .form-inline {
+            &:before {
+                background-color: transparent;
+            }
+		}
+		.basics label {
+			min-width: 100px;
+		}
+        .copyright {
+            .form-inline {
+                &:before {
+                    background:transparent
+                }
+            }
+		}
+		
+		.form-inline {
+			@extend .clearfix;
+			padding:0 30px 30px 30px;
+			background-color:#fff;
+			position: relative;
+			&:before {
+				content:'';
+				display: block;
+				height:1px;
+				position: absolute;
+				left:30px;
+				right:30px;
+				bottom:0;
+				background-color:#ccc;
+			}
+			.row {
+				.form-group {
+					padding-right:20px;					
+				}	
+			}
+			button {
+				margin-top:30px;
+				padding:6px 12px;
+			}
+			&.form-2 {
+				&:before {
+					background:transparent;
+				}
+			}
+			&.form-3 {
+				margin-top:20px;
+				position: relative;
+				padding-right:50px;
+				i {
+					width:20px;
+					height:20px;
+					position: absolute;
+					top:35px;
+					right:35px;
+					border-radius: 50%;
+					overflow: hidden;
+					text-align: center;
+					font:700 20px/20px "微软雅黑";
+					color:#fff;
+					background-color:#5cb85c;
+					cursor: pointer;
+					&.delete {
+						background-color:#d9534f;
+						right:10px;
+					}
+				}
+			}
+        } 
+        .file {
+            width:270px;
+            height:160px;
+            background-color:#fbfbfb;
+            border:1px dashed #d9d9d9;
+            border-radius: 5px;
+            display: inline-block;
+            position: relative;
+            text-align: center;
+            color:#666;    
+            margin-left:10px;        
+            i {
+                color:#4fb9f8;
+                font-size: 30px;
+                margin:50px auto 10px;
+            }
+            input {
+                width:100%;
+                height:100%;
+                position: absolute;
+                left:0;
+                top:0;
+                z-index: 2;
+                opacity: 0;
+                cursor: pointer;
+            }
+		}
+		.ipht {
+			.input-group {
+				// width:460px;
+				// min-width: 460px;
+				min-width: 100px;
+				position: relative;
+				float:left;
+				span {
+					width:30%;
+					padding:0;
+					button {
+						margin:0;
+						height:34px;
+					}
+				}
+			}
+			
+			.btn-group {
+				width:100px!important;
+				line-height: 34px;
+			}
+			.btn-operation {
+				float:right!important;
+				label {
+					margin:0;
+					width:120px;
+					line-height: 34px;
+					text-align: left
+				}
+			}
+		}
+	}
+}
+.btn-look {
+	a {
+		color:#fff!important;
+	}
+}
+.ip-list {
+	button.btn-primary {
+		margin-left:15px;
+		i {
+			color:#fff!important;
+		}
+	}
+}
+#gengk-ad {
+	.form-inline {
+		padding-top:0
+	}
+}
+
+
+.gengk-look {
+	.modal-dialog {
+		width: 96%!important;
+		// height:90%;
+		.modal-content {
+			height:100%;
+			.modal-body {
+				overflow: auto;
+				// height:80%;
+				@extend .modal-row;
+			}
+		}
+	}
+}
+thead th {
+	border:0!important;
+	border-bottom-width: 1px!important;
+}
+.ipadd {
+	.modal-body {
+		// padding:30px;
+		& > .row {
+			//border:1px solid #d1d1d1;
+			.hetong {
+				border-right:1px solid #d1d1d1;
+				padding:10px 0;
+				li {
+					font:14px/30px "微软雅黑";
+					padding:0 10px;
+					cursor: pointer;
+					&:hover, &.active {
+						background-color: rgba(189, 223, 248, 0.4)
+					}					
+				}
+			}
+			.input-group {
+				input {
+					width:100%!important;
+				}
+				span {
+					width:10%!important;
+				}
+			}
+			
+		}
+		
+		tr, th {
+			font-weight: normal
+		}
+		thead {
+			border-top: 1px solid #ddd;
+			th {
+				border:0;
+			}
+		}
+	}
+}
+.music {
+	.wtjg,.yj,.czt {
+		display: none
+	}
+	.registration_number {
+		display: block
+	}
+}
+.qlnews-list, .qlnews-xuanqu, .right-news {
+	tr {
+		input {
+			display: none;
+		}
+	}
+}
+.finearts {
+	.slzj, .djjg, .wtjg {
+		display: none
+	}
+	.ispay,.paid_amount,.currency {
+		display: block
+	}
+}
+.words {
+	.slzj, .djjg, .wtjg {
+		display: none
+	}
+	.ispay,.paid_amount,.currency {
+		display: block
+	}
+}
+.theatre {
+	.djjg, .wtjg {
+		display: none
+	}
+	.ispay,.paid_amount,.currency {
+		display: block
+	}
+}
+.movies {
+	.slzj, .djjg, .wtjg, .yj,.czt {
+		display: none
+	}
+	.sysj,.producer,.joint_producer,.creator_name,.creator_type,.storage_medium,.storage_medium_size {
+		display: block
+	}
+}
+
+.sysj, .registration_number, .producer,.joint_producer,.creator_name,.creator_type,.storage_medium,.storage_medium_size
+,.ispay,.paid_amount,.currency {
+	display: none
+}

@@ -1,0 +1,149 @@
+<!-- 创建合同 产品 ht-tk-->
+<div class="modal fade ht-tk" style="display: blck" id="modal-createContract-produc" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog" style="width:730px!important">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">创建合同</h4>
+			</div>
+			<div class="modal-body">
+				<!-- <ul class="step stepa st-li">
+					<li class=" step-left active" style="width:50%">1.基础信息</li>
+					<li class=" step-right"  style="width:50%">2.附件信息</li>
+				</ul> -->
+				<div>
+					<!--基础信息 start-->
+					<div class="basics main">
+						<form class="form-inline" style="padding:0">
+							<div class="row col-md-12 col-lg-12 ssa">
+								<div class="form-group col-md-4 col-lg-4 xx">
+									<label for="exampleInputName2">合同编号</label>
+									<input type="text" class="form-control" id="contract-num" placeholder="">
+								</div>
+								<!-- <div class="form-group col-md-4 col-lg-4 xx">
+									<label for="exampleInputName2">合同主体</label>
+									<input type="text" class="form-control" id="contract-sub" placeholder="">
+									
+								</div> -->
+								<div class="form-group col-md-4 col-lg-4 xx">
+									<label for="exampleInputName2">合同名称</label>
+									<input type="text" class="form-control" id="contract-name" placeholder="">
+									
+								</div>
+								<div class="form-group col-md-4 col-lg-4 xx">
+									<label for="exampleInputName2">合同金额</label>
+									<input type="text" class="form-control" id="contract-money" placeholder="">
+								</div>
+								<div class="form-group col-md-4 col-lg-4 xx">
+									<label for="exampleInputEmail2">签约日期</label>
+									<div class='input-group date' id='contract-signing-time'>  
+										<input type='text' class="form-control" />  
+										<span class="input-group-addon">  
+											<span class="glyphicon glyphicon-calendar"></span>  
+										</span>  
+									</div> 
+								</div>
+								<div class="form-group col-md-4 col-lg-4">
+									<label for="exampleInputName2">生效日期</label>
+									<div class='input-group date' id='contract-take-time'>  
+										<input type='text' class="form-control s-t" />  
+										<span class="input-group-addon">  
+											<span class="glyphicon glyphicon-calendar"></span>  
+										</span>  
+									</div> 
+								</div>
+								<div class="form-group col-md-4 col-lg-4">
+									<label for="exampleInputName2">失效日期</label>
+									<div class='input-group date' id='contract-invalid-time'>  
+										<input type='text' class="form-control e-t" />  
+										<span class="input-group-addon">  
+											<span class="glyphicon glyphicon-calendar"></span>  
+										</span>  
+									</div> 
+								</div>
+								<div class="form-group col-md-4 col-lg-4">
+									<label for="exampleInputEmail2">有效期</label>
+									<input type="text" class="form-control" id="contract-yes-time" placeholder="">
+								</div>
+								<div class="form-group col-md-12 col-lg-12" style="display: block">
+									<label for="exampleInputEmail2" style="min-width:110px;">支付计划</label>
+									<textarea class="form-control" style="width:78%" rows="3" id="contract-payment-plan"></textarea>
+								</div>
+								<div class="form-group col-md-12 col-lg-12" style="display: block">
+									<label for="exampleInputEmail2" style="min-width:110px;">交付标准及方式</label>
+									<textarea class="form-control" style="width:78%" rows="3" id="contract-payment-method"></textarea>
+								</div>
+								<div class="form-group col-md-12 col-lg-12" style="display: block">
+									<label for="exampleInputEmail2" style="min-width:110px;">合同备注</label>
+									<textarea class="form-control" style="width:78%" rows="3" id="contract-notes"></textarea>
+								</div>
+							</div>
+						</form>
+						<div class="form-inline form-2 button-mt0 mt10">
+							<div class="right-title m0 p0">
+								<h3 class="col-md-3 col-lg-3 mt10 h3-aa">合同签约方信息列表</h3>
+								<div class="pull-right col-md-2 col-lg-2 mt10">
+									<div class="btn-operation">
+										<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal-signatoryInformation"><i class="glyphicon glyphicon-plus"></i>新增</button>
+									</div>
+								</div>
+							</div>
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th class="th">签约方类型</th>
+										<th>签约方名称</th>
+										<th>签约方电话</th>
+										<th>签约方联系人</th>
+										<th>签约方地址</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody id="contract-party-list">
+									
+								</tbody>
+							</table>
+							<div id="example" class="example">
+								<ul id="pageLimit5"></ul>
+							</div>
+						</div>		
+					
+						<div class="right-title" style="padding:0 30px">
+							<h3 class="col-md-2 col-lg-2 h3-aa">合同附件信息</h3>
+							<div class="right-ht col-md-2 col-lg-2">				
+								<div class="btn-operation">
+									<button type="button" class="btn btn-primary" id="btn-added" data-class="contract-appendices-list"><i class="glyphicon glyphicon-plus"></i>上传</button>
+								</div>
+							</div>
+						</div>
+						<div  style="padding:0 30px">
+							<table class="table table-striped">
+								<thead>
+									<tr>
+										<th>附件名称</th>
+										<th>附件类型</th>
+										<th>附件大小</th>
+										<th>上传日期</th>
+										<th>上传人</th>
+										<th>操作</th>
+									</tr>
+								</thead>
+								<tbody class="contract-appendices-list" id="contract-appendices-list">
+									
+								</tbody>
+							</table>
+							<div id="example" class="example">
+								<ul id="pageLimit6"></ul>
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">				
+				<button type="button" class="btn btn-primary next-stepa">完成</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>

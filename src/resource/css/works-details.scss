@@ -1,0 +1,6 @@
+@import './common.scss';
+.details {
+    background-color: #fff;
+    padding:30px;
+    @extend .modal-row
+}

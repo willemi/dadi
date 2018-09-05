@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="Miminium Admin Template v.1">
+	<meta name="author" content="Isna Nur Azis">
+	<meta name="keyword" content="">
+	<title>大地-合同管理</title>
+</head>
+<body>
+<!--header start-->
+<div id="header" class="header">
+	<div class="container-fluid">
+		
+	</div>
+</div>
+<!--header end-->
+<!--sidebar start-->
+<aside class="main-sidebar">
+    <section  class="sidebar">
+        <ul class="sidebar-menu">
+            <li class="header">大地后台管理系统</li>
+            <li class="" style="display: block"><a href="index.html"><i class="fa fa-home"></i> <span>首页</span></a></li>
+            <li class="treeview">
+                <a href="javascript:;"> <i class="fa fa-file-powerpoint-o"></i> <span>著作权管理</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+					<li id="1" class="c-1 li-hide">
+                        <a href="javascript:;"><i class="fa fa-credit-card"></i>作品信息管理<i class="fa fa-angle-left pull-right"></i></a>
+                        <ul class="treeview-menu">
+							<li class=""><a href="works-music.html"><i class="fa fa-edit"></i>音乐作品</a></li>
+							<li class=""><a href="works-fineArts.html"><i class="fa fa-edit"></i>美术作品</a></li>
+							<li class=""><a href="works-words.html"><i class="fa fa-edit"></i>文字作品</a></li>
+							<li class=""><a href="works-theatre.html"><i class="fa fa-edit"></i>戏剧作品</a></li>
+							<li class=""><a href="works-movies.html"><i class="fa fa-edit"></i>影视动画作品</a></li>
+                        </ul>
+                    </li>
+					<li id="2" class="c-2 li-hide"><a href="produc-management.html"><i class="fa fa-credit-card"></i>产品信息管理</a></li>
+                </ul>
+            </li>
+            <li id="4" class="c-4"><a href="trademark-management.html"><i class="fa fa-edit"></i> <span>商标信息管理</span></a></li>
+            <li id="5" class="c-5"><a href="patent-management.html"><i class="fa fa-edit"></i> <span>专利信息管理</span></a> </li>
+            <li id="6" class="c-6"><a href="field-management.html"><i class="fa fa-edit"></i> <span>域名信息管理</span></a> </li>
+            <li id="3" class="c-3 active"><a href="contract-management.html"><i class="fa fa-clipboard"></i> <span>合同信息管理</span></a></li>
+            <li class="treeview c-7" id="7">
+                <a href="javascript:;"><i class="fa fa-file-powerpoint-o"></i> <span>查询统计中心</span> <i class="fa fa-angle-left pull-right"></i> </a>
+                <ul class="treeview-menu">
+					<li class=""><a href="works-search.html"><i class="fa fa-search-plus"></i>作品信息查询统计</a></li>
+                    <li class=""><a href="contract-search.html"><i class="fa fa-search-plus"></i>合同信息查询统计</a></li>
+                    <li class=""><a href="produc-search.html"><i class="fa fa-search-plus"></i>产品信息查询统计</a></li>
+                </ul>
+            </li>
+            <li class="treeview c-12" id="12">
+                <a href="javascript:;"> <i class="fa fa-cogs"></i> <span>系统管理</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li  id="8" class="c-8 li-hide"><a href="system-dictionaries.html"><i class="fa fa-gear "></i>基础字典设置</a></li>
+                    <li  class="li-hide"><a href="system-right.html"><i class="fa fa-gear "></i>权利信息设置</a></li>
+                    <li  id="9" class="c-9 li-hide"><a href="system-data.html"><i class="fa fa-gear "></i>权利数据设置</a></li>
+                    <li  id="10" class="c-10 li-hide"><a href="system-user.html"><i class="fa fa-gear "></i>用户信息设置</a></li>
+                    <li  id="11" class="c-11 li-hide"><a href="system-Jurisdiction.html"><i class="fa fa-gear "></i>权限信息设置</a></li>
+                    <li  class="li-hide"><a href="system-Journal.html"><i class="fa fa-gear "></i>系统操作日志</a></li>
+                    <li  id="13" class="c-13 li-hide"><a href="system-process.html"><i class="fa fa-gear "></i>流程管理</a></li>
+                </ul>
+            </li>
+        </ul>
+    </section>
+</aside>
+<div class="messages"></div>
+<dl class="user">
+    <!-- <dt class="name">汪</dt> -->
+    <dd class="out">[退出]</dd>
+</dl>
+<!--sidbar end-->
+<!--cont start-->
+<div id="content" class="content contractAdd cont-3">
+	<div class="content-wrapper">
+		<h3>大地传播</h3>
+		<div class="right-title">
+			<h3 class="col-md-2 col-lg-2">合同信息管理</h3>			
+			<button class="btn btn-primary col-md-1 col-lg-1" style="float:right;padding:5px 0" type="button" data-toggle="modal" data-target="#modal-search">高级搜索</button>			
+			<div class="right-ht" >					
+				<div class="input-group" style="margin:0 auto;width:500px;">
+					<input type="text" class="form-control" style="width:450px!important;float:left;" id="ht-name" placeholder="请输入查询合同名称">
+					<span class="input-group-btn" style="width:50px!important;float:left;padding:0" id="ht-name">
+						<button class="btn btn-primary btn-ht btn-adda" style="width:50px!important;margin:0;height:34px;" type="button">搜索</button>
+					</span>
+				</div>
+			</div>	
+		</div>
+		<div>
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th class="th">序号</th>
+						<th>合同编号</th>
+						<th>合同名称</th>
+						<th>合同金额</th>
+						<th>签约日期</th>
+						<th>生效日期</th>
+						<th>失效日期</th>
+						<th>签约方</th>
+						<th>关联状态</th>
+					</tr>
+				</thead>
+				<tbody class="htn-list">
+					<!-- <tr>
+						<th class="th" scope="row">1</th>
+						<td>123</td>
+						<td class="aa" data-toggle="modal" data-target="#modal-ht">默认弹框</td>
+						<td>20000</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>甲方 乙方 丙方</td>
+						<td>XXXXX-2323</td>
+						<td><button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-pencil"></i>修改</button><button type="button" class="btn btn-default">删除</button>	</td>
+					</tr>
+					<tr>
+						<th class="th" scope="row">1</th>
+						<td>123</td>
+						<td class="aa" data-toggle="modal" data-target="#modal-ht-sb">商标</td>
+						<td>20000</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>甲方 乙方 丙方</td>
+						<td>XXXXX-2323</td>
+						<td><button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-pencil"></i>修改</button><button type="button" class="btn btn-default">删除</button>	</td>
+					</tr>
+					<tr>
+						<th class="th" scope="row">1</th>
+						<td>123</td>
+						<td class="aa" data-toggle="modal" data-target="#modal-ht-zl">专利</td>
+						<td>20000</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>甲方 乙方 丙方</td>
+						<td>XXXXX-2323</td>
+						<td><button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-pencil"></i>修改</button><button type="button" class="btn btn-default">删除</button>	</td>
+					</tr>
+					<tr>
+						<th class="th" scope="row">1</th>
+						<td>123</td>
+						<td class="aa" data-toggle="modal" data-target="#modal-ht-ym">域名</td>
+						<td>20000</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>2018-02-23</td>
+						<td>甲方 乙方 丙方</td>
+						<td>XXXXX-2323</td>
+						<td><button type="button" class="btn btn-default" ><i class="glyphicon glyphicon-pencil"></i>修改</button><button type="button" class="btn btn-default">删除</button>	</td>
+					</tr> -->
+				</tbody>
+			</table>
+			<div id="example" class="example">
+				<ul id="pageLimit"></ul>
+			</div>
+		</div>
+	</div>
+</div>
+<!-- 高级搜索-->
+<style>
+.dfg span, .ht-l label {
+	width:100px;
+	float:left;
+	text-align: right;
+	margin-right:5px;
+}
+.ht-l input {
+	width:200px!important;
+	min-width: 200px!important;
+}
+.ht-2 div {
+	float:right
+}
+.ht-2 textarea {
+	width:620px!important;
+	min-width: 620px!important;
+	margin:0
+}
+</style>
+<div class="modal fade" style="display:bock" id="modal-search" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">高级搜索</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-inline dfg">
+					<div class="row">
+						<span>关联模块</span>
+						<div>
+							<label class="checkbox-inline">
+								<input type="radio" checked  name="mode0" id="" value=""> 全部
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio"  name="mode0" id="" value="1"> 来源于作品
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio"  name="mode0" id="" value="2"> 来源于产品
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio"  name="mode0" id="" value="3"> 来源于商标
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio"  name="mode0" id="" value="4"> 来源于专利
+							</label>
+							<label class="checkbox-inline">
+								<input type="radio"  name="mode0" id="" value="5"> 来源于域名
+							</label>
+						</div>
+					</div>
+					<div class="row ht-l">
+						<!-- <div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">合同名称</label>
+							<input type="text" class="form-control" id="contract_name" value="">
+						</div> -->
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">合同金额</label>
+							<input type="text" class="form-control" id="contract_amount" value="">
+						</div>	
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">合同签约日期</label>
+							<div class='input-group date' id='sign_date'>  
+								<input type='text' class="form-control" />  
+								<span class="input-group-addon">  
+									<span class="glyphicon glyphicon-calendar"></span>  
+								</span>  
+							</div> 
+						</div>				
+					</div>
+					<div class="row ht-l">						
+						<div class="form-group col-md-6 col-lg-6">
+                       	 	<label for="exampleInputName2">合同生效日期</label>
+                        	<div class='input-group date' id='effect_date'>  
+                                <input type='text' class="form-control" />  
+                                <span class="input-group-addon">  
+                                    <span class="glyphicon glyphicon-calendar"></span>  
+                                </span>  
+                            </div> 
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+								<label for="exampleInputName2">合同失效日期</label>
+							<div class='input-group date' id='invalid_date'>  
+								<input type='text' class="form-control" />  
+								<span class="input-group-addon">  
+									<span class="glyphicon glyphicon-calendar"></span>  
+								</span>  
+							</div> 
+						</div>
+						<!-- <div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">合同主体</label>
+							<input type="text" class="form-control" id="modal-n-authorized-person" placeholder="">
+						</div> -->
+					</div>
+					<div class="row ht-l">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">支付方式</label>
+							<input type="text" class="form-control" id="pay_type" value="">
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">支付标准及方式</label>
+							<input type="text" class="form-control" id="pay_standard" value="">
+						</div>
+					</div>
+					<!-- <div class="row col-md-12 col-lg-12">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">签约方类型</label>
+							<select class="form-control" id="modal-right-info-type">
+								<option>有</option>
+								<option>无</option>
+							</select>
+						</div>
+						<div class="form-group col-md-6 col-lg-4">
+							<label for="exampleInputName2">签约方名称</label>
+							<input type="text" class="form-control" id="modal-p-authorized-person" value="">
+						</div>					
+					</div>
+					<div class="row col-md-12 col-lg-12">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">签约方电话</label>
+							<input type="text" class="form-control" id="modal-p-obligee" value="">
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">签约方联系人</label>
+							<input type="text" class="form-control" id="modal-p-authorized-person" value="">
+						</div>					
+					</div>
+					<div class="row col-md-12 col-lg-12 form-group">
+						<span class="col-md-2 col-lg-2">签约方地址</span>
+						<div class="col-md-10 col-lg-10">
+							<textarea class="form-control ml10" rows="3" id="modal-right-info-remarks"></textarea>
+						</div>
+					</div> -->
+					<div class="row form-group ht-2">
+						<span>备注</span>
+						<div>
+							<textarea class="form-control ml10" rows="3" id="contract_explain"></textarea>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div class="modal-footer">				
+				<button type="button" class="btn btn-primary" id="modal-b-authorization">确认</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--合同详情-->
+<%= require('html-loader!./include/modal-detailsContract-produc.html') %>
+<!--合同详情 商标 gengk-look-->
+<div class="modal fade gengk-look " style="display:bock;" id="modal-ht-sb" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">合同详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<h4>基础信息</h4>
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>合同编号</label>
+								<span>XXXXXXX189675456WSPD</span>
+							</li>
+							<!-- <li>
+								<label>合同主体</label>
+								<span>XXXXXXX</span>
+							</li> -->
+							<li>
+								<label>呈文部门</label>
+								<span>XXXXX部门</span>
+							</li>
+							<li>
+								<label>合同名称</label>
+								<span>XXXX合同</span>
+							</li>
+							<li>
+								<label>合同金额</label>
+								<span>1000元</span>
+							</li>
+							<li>
+								<label>签约日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>生效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>失效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>有效期</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付方式</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付计划</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付标准及方式</label>
+								<span>其他</span>
+							</li>
+							<li>
+								<label>备注</label>
+								<span>这里是备注这里是备注这里是备注这里是备注</span>
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<div class="row">
+					<h4>商标信息</h4>
+					<div class="row-cont sbxx">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">商标名称</label>
+							<a data-toggle="modal" data-target="#modal-ht-sb-tk">北京超凡知识产权</a>
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">商标状态</label>
+							<p>申请中</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<h4>签约方信息</h4>
+					<div class="row-cont">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>签约方</th>
+									<th>签约方类型</th>
+									<th>签约方名称</th>
+									<th>签约方电话</th>
+									<th>签约方联系人</th>
+									<th>签约方地址</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--合同详情 商标详情 gengk-look-->
+<div class="modal fade gengk-look" style="display:bock;" id="modal-ht-sb-tk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">商标详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>商标名称</label>
+								<span>北京超凡知识产权</span>
+							</li>
+							<li>
+								<label>商标进度</label>
+								<span>申请中</span>
+							</li>
+							<li>
+								<label>申请代理机构</label>
+								<span>XXXXX部门</span>
+							</li>
+							<li>
+								<label>是否复审</label>
+								<span>是</span>
+							</li>
+							<li>
+								<label>复审代理机构</label>
+								<span>xXXX</span>
+							</li>
+							<li>
+								<label>注册类别</label>
+								<span>xXXX</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--合同详情 专利 gengk-look-->
+<div class="modal fade gengk-look" style="display:bock;" id="modal-ht-zl" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">合同详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<h4>基础信息</h4>
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>合同编号</label>
+								<span>XXXXXXX189675456WSPD</span>
+							</li>
+							<!-- <li>
+								<label>合同主体</label>
+								<span>XXXXXXX</span>
+							</li> -->
+							<li>
+								<label>呈文部门</label>
+								<span>XXXXX部门</span>
+							</li>
+							<li>
+								<label>合同名称</label>
+								<span>XXXX合同</span>
+							</li>
+							<li>
+								<label>合同金额</label>
+								<span>1000元</span>
+							</li>
+							<li>
+								<label>签约日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>生效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>失效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>有效期</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付方式</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付计划</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付标准及方式</label>
+								<span>其他</span>
+							</li>
+							<li>
+								<label>备注</label>
+								<span>这里是备注这里是备注这里是备注这里是备注</span>
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<div class="row">
+					<h4>专利信息</h4>
+					<div class="row-cont sbxx">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">专利名称</label>
+							<a data-toggle="modal" data-target="#modal-ht-zl-tk">XXX专利</a>
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">专利状态</label>
+							<p>申请中</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<h4>签约方信息</h4>
+					<div class="row-cont">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>签约方</th>
+									<th>签约方类型</th>
+									<th>签约方名称</th>
+									<th>签约方电话</th>
+									<th>签约方联系人</th>
+									<th>签约方地址</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--合同详情 专利详情 gengk-look-->
+<div class="modal fade gengk-look" style="display:blck;" id="modal-ht-zl-tk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">专利详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>专利名称</label>
+								<span>专利</span>
+							</li>
+							<li>
+								<label>专利号</label>
+								<span>123</span>
+							</li>
+							<li>
+								<label>证书号</label>
+								<span>123123</span>
+							</li>
+							<li>
+								<label>权利状态</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>专利类型</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>发明人/设计人</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>专利授权人</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权单位</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>被授权单位</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权形式</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权开始日期</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权结束日期</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权区域</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权范围</label>
+								<span>XXXXX</span>
+							</li>
+							<li>
+								<label>授权单位经营范围</label>
+								<span>XXXXX</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+<!--合同详情 域名 gengk-look-->
+<div class="modal fade gengk-look" style="display:blck;" id="modal-ht-ym" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">合同详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<h4>基础信息</h4>
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>合同编号</label>
+								<span>XXXXXXX189675456WSPD</span>
+							</li>
+							<!-- <li>
+								<label>合同主体</label>
+								<span>XXXXXXX</span>
+							</li> -->
+							<li>
+								<label>呈文部门</label>
+								<span>XXXXX部门</span>
+							</li>
+							<li>
+								<label>合同名称</label>
+								<span>XXXX合同</span>
+							</li>
+							<li>
+								<label>合同金额</label>
+								<span>1000元</span>
+							</li>
+							<li>
+								<label>签约日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>生效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>失效日期</label>
+								<span>2017-06-10</span>
+							</li>
+							<li>
+								<label>有效期</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付方式</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付计划</label>
+								<span>2年</span>
+							</li>
+							<li>
+								<label>支付标准及方式</label>
+								<span>其他</span>
+							</li>
+							<li>
+								<label>备注</label>
+								<span>这里是备注这里是备注这里是备注这里是备注</span>
+							</li>
+						</ul>
+					</div>
+				</div>				
+				<div class="row">
+					<h4>域名信息</h4>
+					<div class="row-cont sbxx">
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">域名地址</label>
+							<a data-toggle="modal" data-target="#modal-ht-ym-tk">WWW.DADI.COM</a>
+						</div>
+						<div class="form-group col-md-6 col-lg-6">
+							<label for="exampleInputName2">所有者</label>
+							<p>所有者</p>
+						</div>
+					</div>
+				</div>
+				<div class="row">
+					<h4>签约方信息</h4>
+					<div class="row-cont">
+						<table class="table table-bordered">
+							<thead>
+								<tr>
+									<th>签约方</th>
+									<th>签约方类型</th>
+									<th>签约方名称</th>
+									<th>签约方电话</th>
+									<th>签约方联系人</th>
+									<th>签约方地址</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+								<tr>
+									<td>XXX签约方</td>
+									<td>名称</td>
+									<td>5</td>
+									<td>13456789064</td>
+									<td>XXXXX</td>
+									<td>这里是签约方地址这里是签约方地址</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--合同详情 域名详情 gengk-look-->
+<div class="modal fade gengk-look" style="display:bl1ock;" id="modal-ht-ym-tk" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h4 class="modal-title" id="myModalLabel">域名详情</h4>
+			</div>
+			<div class="modal-body">
+				<div class="row">
+					<div class="row-cont">
+						<ul>
+							<li>
+								<label>域名地址</label>
+								<span>www.dado.com</span>
+							</li>
+							<li>
+								<label>所有者</label>
+								<span>所有者</span>
+							</li>
+							<li>
+								<label>所有者联系邮箱</label>
+								<span>dadi@dadi.com</span>
+							</li>
+							<li>
+								<label>注册商</label>
+								<span>注册商</span>
+							</li>
+							<li>
+								<label>注册日期</label>
+								<span>2018-12-21 12:11</span>
+							</li>
+							<li>
+								<label>到期日期</label>
+								<span>2018-12-21 12:11</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!-- 引用原始库作品 产品 #Indexes -->
+<div class="modal fade Indexes" id="modal-referenceWorks" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">查询引用作品信息</h4>
+            </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-md-6 col-lg-6 col-md-push-2">
+                        <input type="text" class="form-control" id="workName" aria-label="...">
+                    </div><!-- /.col-lg-6 -->
+                    <button type="button" class="btn btn-primary col-md-push-3 btn-yuans">查询</button>
+                </div>
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>作品ID</th>
+                            <th>作品名称</th>
+                            <th>作品类型</th>
+                            <th>授权人</th>
+                            <th>被授权人</th>
+                            <th>授权权利</th>
+                            <th>授权时间</th>
+                            <th>授权方式</th>
+                            <th>授权地域</th>
+                            <th>授权语言</th>
+                            <th>转授权</th>
+                            <th>维权权利</th>
+                            <th>使用渠道限制</th>
+                            <th>使用次数</th>
+                            <!-- <th>操作</th> -->
+                        </tr>
+                    </thead>
+                    <tbody class="work-search-list">
+                    </tbody>
+                </table>
+                <div id="example" class="example">
+                    <ul id="pageLimit-Indexes"></ul>
+                </div>
+            </div>
+            <div class="modal-footer">				
+                <button type="button" class="btn btn-primary btn-index">引用</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

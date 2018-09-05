@@ -1,0 +1,29 @@
+.input-group {
+    width:1%;
+    min-width: auto!important;
+    margin:0 auto;
+    input[type="text"] {
+       width:200px!important;
+       height:30px;
+       min-width: auto!important;
+   }
+}
+.table {
+    a {
+        padding:0 5px;
+    }
+}
+.js {
+    float: left;
+    span {
+        float: left;
+        display: table;
+        padding:0 15px 0 10px;
+        input, p {
+            float: left;
+            margin-right: 5px;
+            cursor: pointer;
+        }
+    }
+    
+}

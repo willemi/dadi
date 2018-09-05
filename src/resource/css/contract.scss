@@ -1,0 +1,70 @@
+@import './easy-upload.scss';
+.contractAdd {
+    .content-wrapper {
+        .st-li li {
+            width:33.3333%;
+            float:left;
+        }
+        .basics {
+            margin-top:20px;           
+            .form-inline {
+                padding:50px 30px;
+            }
+        }
+        .sign {
+            label {
+                width:100px;
+            }
+            textarea.form-control {
+                width:83%;
+            }
+        }
+        .contract-party {
+            label {
+                width:120px;
+            }
+            textarea.form-control {
+                width:83%;
+            }
+            .border {
+                position: relative;
+                &:before {                    
+                    content:'';
+                    display: block;
+                    height:1px;
+                    position: absolute;
+                    left:30px;
+                    right:30px;
+                    top:15px;
+                    background-color:#ccc;
+                }
+            }      
+        }
+        .set-up {
+            label {
+                width:120px;
+            }
+            textarea.form-control {
+                width:83%;
+            }
+        }
+        .sign, .contract-party, .set-up, .contract-a {
+            display:none;
+        }
+    }    
+}
+.sbxx {
+    a, p, label {
+        float:left;       
+    }
+    a, p {
+        margin-left:20px;
+        color:#428BCA;
+    }
+    a {
+        text-decoration: underline;
+    }
+}
+.aa {
+    text-decoration: underline;
+}

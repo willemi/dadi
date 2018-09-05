@@ -1,0 +1,13 @@
+.journal-list {
+    width:100%;
+    height:auto;
+    overflow: hidden;
+    padding:10px;
+    background-color: #fff;
+    li {
+        height:60px;
+        font:20px/60px "微软雅黑";
+        text-align: center;
+        border-bottom:1px solid #ccc;
+    }
+}

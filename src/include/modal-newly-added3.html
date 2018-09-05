@@ -1,0 +1,215 @@
+<!-- 权利信息添加 newly-added1-->
+<div class="modal fade newly-added tl" style="display:lock" id="modal-newly-added3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                <h4 class="modal-title" id="myModalLabel">新增</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-form">
+                    <div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label for="exampleInputName2">授权比例</label>
+                                <input type="text" class="form-control" id="droit_propor" placeholder="">
+                                <i></i>
+                            </div>
+                            <div class="form-group col-md-6 col-lg-6">
+                                <label for="exampleInputName2">授权价格</label>
+                                <input type="text" class="form-control" id="droit_price" placeholder="">
+                                <i></i>
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">作品形态</span>
+                            <div class="col-md-10 col-lg-10 limit1">
+                                <!-- <label class="radio-inline ">
+                                    <input type="radio" checked name="limit1" id="" value="直接使用">直接使用
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit1" id="" value="衍生授权"> 衍生授权
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit1" id="" value="素材授权"> 素材授权
+                                </label> -->
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权权利</span>
+                            <div class="col-md-10 col-lg-10 mode0">
+                                <!-- <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="改编权"> 改编权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="电影摄制权"> 电影摄制权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="动画摄制权"> 动画摄制权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="院线发行权"> 院线发行权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="信息网络传播权"> 信息网络传播权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="其他发行权"> 其他发行权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="展览权"> 展览权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="玩具形象授权"> 玩具形象授权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="游戏开发授权"> 游戏开发授权
+                                </label>
+                                <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value="续集开发授权"> 续集开发授权
+                                </label> -->
+                                <!-- <label class="checkbox-inline">
+                                    <input type="checkbox"  name="mode0" id="" value=""> 可继续自定义
+                                </label> -->
+                            </div>
+                        </div>
+                        
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权权利描述</span>
+                            <div class="col-md-10 col-lg-10">
+                                <textarea class="form-control ml10" rows="3" id="droit_content"></textarea>
+                            </div>
+                        </div>	
+                        <div class="row col-md-12 col-lg-12 line" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权时间</span>
+                            <div class="col-md-10 col-lg-10">
+                                <div class="col-md-12 col-lg-12">
+                                    <input type="radio" checked name="time" id="" value="">
+                                    <input size="16" type="text" id="sqxk_ksrq" readonly class="form_datetime ml10 form-control">
+                                    一
+                                    <input size="16" type="text" id="sqxk_jsrq" readonly class="form_datetime form-control">
+                                </div>
+                                <!-- <div class="col-md-12 col-lg-12">
+                                    <div class="col-md-2 col-lg-2 add-a">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" checked name="time" id="" value=""> 无限制
+                                        </label>
+                                    </div>
+                                    <div class="col-md-10 col-lg-10 add-a">
+                                        <label class="checkbox-inline">
+                                            <input type="radio" checked name="time" id="" value=""> 自定义时间
+                                            <input type="text" class="form-control" id="modal-right-info-mTime" placeholder="">
+                                        </label>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权方式</span>
+                            <div class="col-md-10 col-lg-10 limit3">
+                                <!-- <label class="radio-inline ">
+                                    <input type="radio" checked name="limit3" id="" value="独家授权"> 独家授权  
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit3" id="" value="独家但保留我方自用"> 独家但保留我方自用
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit3" id="" value="非独家授权"> 非独家授权
+                                </label> -->
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12 line" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权地域</span>
+                            <div class="col-md-10 col-lg-10 region">
+                                <!-- <label class="radio-inline">
+                                    <input type="radio" checked name="region" id="" value="无限制"> 无限制
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="region" id="" value="中国大陆(含港澳台)"> 中国大陆(含港澳台)
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="region" id="" value="中国大陆(不含港澳台)"> 中国大陆(不含港澳台)
+                                </label> -->
+                                <!-- <label class="checkbox-inline">
+                                    <input type="checkbox" name="region" id="" value=""> 其他
+                                    <input type="text" class="form-control" id="modal-right-info-m" placeholder="">
+                                </label> -->
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12 line" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">授权语言</span>
+                            <div class="col-md-10 col-lg-10 language">
+                                <!-- <label class="radio-inline">
+                                    <input type="radio" checked name="language" id="" value="无限制"> 无限制
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="language" id="" value="中文"> 中文
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="language" id="" value="英文"> 英文
+                                </label> -->
+                                <!-- <label class="checkbox-inline new-inline">
+                                    <input type="checkbox" name="language" id="" value="">其他 <input type="type" name="" id="" value="" class="form-control">
+                                </label> -->
+                            </div>
+                        </div>
+
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">是否可以转授权</span>
+                            <div class="col-md-10 col-lg-10">
+                                <label class="radio-inline">
+                                    <input type="radio" checked name="limit4" id="" value="1"> 是
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit4" id="" value="0"> 否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">是否有维权权利</span>
+                            <div class="col-md-10 col-lg-10">
+                                <label class="radio-inline">
+                                    <input type="radio" checked name="limit" id="" value="1"> 有
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="limit" id="" value="0"> 否
+                                </label>
+                            </div>
+                        </div>
+                        <div class="row col-md-12 col-lg-12" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">使用渠道限制</span>
+                            <div class="col-md-10 col-lg-10 mode">
+                                <!-- <label class="radio-inline">
+                                    <input type="radio" checked name="mode" id="" value="无限制"> 无限制
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="mode" id="" value="移动终端"> 移动终端
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="mode" id="" value="户外媒体终端"> 户外媒体终端
+                                </label>
+                                <label class="radio-inline">
+                                    <input type="radio" name="mode" id="" value="仅限网页使用"> 仅限网页使用
+                                </label> -->
+                            </div>
+                        </div>
+                        
+                        <div class="row col-md-12 col-lg-12 line" style="float: inherit">
+                            <span class="col-md-2 col-lg-2">许可使用次数</span>
+                            <div class="col-md-10 col-lg-10">
+                                <input type="text" class="ml10 form-control" id="sqxk_sycs"> 次
+                                <!-- <label class="checkbox-inline">
+                                    <input type="checkbox" checked name="time" id="modal-right-info-freq" value=""> 无限制
+                                </label> -->
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">				
+                <button type="button" class="btn btn-primary btn-news ">确认</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+            </div>
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal -->
+</div>

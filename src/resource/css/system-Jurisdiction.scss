@@ -1,0 +1,118 @@
+@import './common.scss';
+.table-responsive {
+    background-color: #fff;
+    h3 {
+        padding:0 30px;
+        font:16px/50px "微软雅黑";
+        border-bottom:1px solid #ccc;        
+    }
+    .row {
+        margin-top:30px;
+    }
+}
+.dd-fixed {
+    width:440px;
+    height:auto;
+    background-color: #fff;
+    position: fixed;
+    left:50%;
+    top:50%;
+    transform: translate(-50%, -50%);
+    border-radius: 6px;
+    z-index: 999;
+    border:1px solid #ddd;
+    overflow: hidden;
+    display: none;
+    h3 {
+        background-color: #f5f5f5;
+        border-bottom:1px solid #ddd;
+        padding:0 10px;
+        font:16px/30px "微软雅黑";
+        a {
+            float:right;
+            display: inline-block
+        }
+    }
+    div {
+        padding:30px;
+        label {
+            float:left;
+            margin-right:10px;
+            font:14px/30px "微软雅黑";
+        }
+        input {
+            border-radius: 3px;
+            height:30px;
+            font:14px/30px "微软雅黑";
+            padding:0 10px;
+            border:1px solid #ddd
+        }
+    }
+    .f-qr {
+        padding:0 30px;
+        font:14px/30px "微软雅黑";
+        border:1px solid #ddd;
+        display: table;
+        margin:30px auto;
+        border-radius: 3px;
+    }
+}
+.admin-tabel {
+    .ee, .ss {
+        //display: none;
+    }
+    .panel-body {
+        padding:15px 0;
+        ul {
+            li {
+                padding:0 10px;
+                line-height: 24px;
+                cursor: pointer;
+                &:hover, &.active {
+                    background-color: rgba(242, 242, 242, 1);                    
+                }
+                position: relative;
+            }
+            &.yiji {
+                li {
+                    cursor: pointer;
+                }
+            }           
+            &#permission {
+                padding:0 30px 30px;
+                li {
+                    width:33%;
+                    margin-top:10px;
+                    float: left;
+                    input {
+                        float:left;
+                        min-width: 15px!important;
+                        width:15px!important;
+                        margin:6px 10px 0 0;
+                    }
+                    label {
+                        text-align: left
+                    }
+                }
+            }
+        }
+    }
+}
+.dl-tk {
+    width:135px;
+    height:auto;
+    border:1px solid #ccc;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    position: absolute;
+    background-color: #fff;
+    z-index: 99;
+    dt, dd {
+        padding:0 10px;
+        line-height: 36px;
+        cursor: pointer;
+    }
+    dt {
+        border-bottom: 1px solid #ccc;
+    }
+}

@@ -1,0 +1,151 @@
+@import './common.scss';
+@import './easy-upload.scss';
+.contractAdd {
+    .content-wrapper {
+        .set-project {
+            label {
+                width:100px;
+            }
+            textarea.form-control {
+                width:83%;
+            }
+            button.file {
+                margin:0;
+            }
+        }
+        .participant {
+            dl {
+                padding:10px 30px;
+                height:50px;
+                background-color: #fff;
+                dt {
+                    float:left;
+                    font:14px/30px "微软雅黑";
+                }
+                dd {
+                    float:right;
+                    margin-left:10px;
+                    i {
+                        font-size: 12px;
+                        margin-right:5px;
+                    }
+                }
+            }
+            td {
+                button {
+                    color:#4B70C1;
+                    i {
+                        font-size:12px;
+                        margin-right:5px;
+                    }
+                }
+            }
+        }
+        .resources {
+            .row.bcf {
+                padding:10px 30px 0;
+                background-color: #fff;                
+                height:50px;
+                border-bottom:1px solid #ccc;
+                position: relative;
+                ul {
+                   border:0;
+                    z-index: 1;
+                    position: relative;
+                    overflow: hidden;
+                    height:40px;
+                    // li {
+                    //     float:left;
+                    //     padding:0 15px;
+                    //     height:40px;
+                    //     margin-right:10px;
+                    //     color: #428BCA;
+                    //     font:12px/40px "微软雅黑";
+                    //     border:1px solid rgba(255,255,255,0);
+                    //     border-bottom:#ccc;
+                    //     border-top-left-radius: 5px;
+                    //     border-top-right-radius: 5px;
+                    //     cursor: pointer;
+                    //     &.active, &:hover {
+                    //         color: rgb(85, 85, 85);
+                    //         border-color:#ccc;
+                    //         background-color:#fff;
+                    //     }
+                        
+                    // }
+                }
+                button {
+                    position: absolute;
+                    z-index: 2;
+                    right:10px;
+                    top:8px;
+                }
+            }
+            .tab-content {
+                width:100%;
+                min-height:300px;
+                .tab-pane {
+                    p {
+                        text-align: center;
+                        line-height: 300px;
+                    }
+                }
+            }
+            textarea {
+                width:90%;
+            }
+        }
+        .resources {
+            display: none;
+        }
+    }
+}
+.tr-hide, .nes-table, .ht-1, .content-02, .xzql-list {
+display: none;
+}
+.participant-modal {
+    label {
+        width:200px;
+        margin-right:15px;
+        color: #A3AFC1;
+    }
+    input, select {
+        min-width:200px;
+    }
+}
+.Indexes {
+    .modal-dialog {
+        width:90%!important;
+    }
+    .modal-body {
+        button {
+            position: relative;
+        }
+        table {
+            margin-top:20px;
+            &, th ,td {
+                text-align: center;
+                color:#A3AFC1;
+                font-weight: normal;
+            } 
+        }
+        .row {
+            input {
+                width:100%!important;
+            }
+        } 
+        .form-inline {
+            padding-top:0;
+        }
+    }
+}
+.newly-added {
+    .modal-body {
+        .form-inline {
+            padding-top:0;
+        }
+    }
+    .aa {
+        display: none
+    }
+}
