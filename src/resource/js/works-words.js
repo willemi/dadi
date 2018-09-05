@@ -1359,7 +1359,7 @@ function bindEvents(){
 					$(".details-list").html(detailsListTpl(data.obligee));
 					$(".details-qlnews").html(detailsQlnewsTpl(data.droit));
 					$(".details-fjian").html(detailsFjianTpl(data.fileobj));
-
+					$("#check_remark").text(data.opus.check_remark)
 					$('#modal-details-look').modal('show');
 				}else{
                     util.showMsg(res.message)

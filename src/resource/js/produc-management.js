@@ -392,6 +392,7 @@ function bindEvents(){
 					data.droit && $(".details-list-b").html(producDatilsCpTpl(dra));
 					data.contract && $(".details-list-c").html(itemProducHtTpl(data.contract));
 					data.fileobj && $(".details-fjian").html(detailsFjianTpl(data.fileobj));
+					$("#check_remark").text(data.product.check_remark)
 					$(".details-list-a input").hide();
 					$('#modal-produc-details-look').modal('show');
 				}else{
