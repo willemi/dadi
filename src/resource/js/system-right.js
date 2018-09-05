@@ -2,6 +2,7 @@ import '../css/system-right.scss';
 
 const util = require("./common/util.js")
 let qizId, qlzNmae, droit_g_id;
+let qizzId;
 let fun;
 // 删除大修模态框的确定按钮的点击事件
 $("#deleteHaulBtn").click(function() {
@@ -48,11 +49,29 @@ function bindEvents(){
 		});
 		fun = qdele;
 	})
+
+	$doc.on("click", ".btn2-edit", function(){
+		qizzId = $("input[name='qlzz']:checked").val();
+		xg(qizzId)
+	})
+	$doc.on("click", ".btn2-del", function(){
+		qizzId = $("input[name='qlzz']:checked").val();
+		$("#deleteHaulId").val(qizzId);// 将模态框中需要删除的大修的ID设为需要删除的ID
+		$("#delcfmOverhaul").modal({
+			backdrop : 'static',
+			keyboard : false
+		});
+		fun = qzdele;
+	})
 	
 	$("#modal-qlz").on('hidden.bs.modal', function () {
 		qizId = ''
 		$("#name").val('');
 		$("#bz").val('');
+	})
+
+	$("#modal-newly-added3").on('hidden.bs.modal', function () {
+		qizzId = ''
 	})
 	util.timepickerSection("sqxk_ksrq", "sqxk_jsrq");	
 	$doc.on("click",".btn-news",function(){
@@ -72,7 +91,7 @@ function bindEvents(){
 			sqxk_sycs = $("#sqxk_sycs").val();
 
 		let data = {
-			id: droit_id,
+			id: qizzId,
 			droit_propor: droit_propor,
 			droit_price: droit_price,
 			is_propri: is_propri,
@@ -114,6 +133,30 @@ function qdele(){
 		type: "get",
 		url: host +"/dadi/droitg/delete",
 		data: {id:qizId},
+		dataType: "json",
+		cache: false,
+		contentType: "application/json;charset=UTF-8",
+		success: function(res) {
+			if(res && res.status == 1){
+				setTimeout(() => {
+					location.reload();
+				}, 2000);
+			}else{
+				
+			}
+			util.showMsg(res.message)
+		},
+		error: function(error){
+			util.showMsg("error")
+		}
+	});			
+}
+function qzdele(){
+	let qizzId = $("#deleteHaulId").val();
+	$.ajax({
+		type: "get",
+		url: host +"/dadi/droit/delete",
+		data: {id:qizzId},
 		dataType: "json",
 		cache: false,
 		contentType: "application/json;charset=UTF-8",
@@ -180,19 +223,17 @@ initpid(22, $(".language"), "radio", "language")
 //使用渠道限制
 initpid(25, $(".mode"), "radio", "mode")
 
-let droit_id;
 function xg(){
 	$.ajax({
 		type: "POST",
 		url: host +"/dadi/droit/....",
-		data: JSON.stringify(data),
+		data: {id: qizzId},
 		dataType: "json",
 		cache: false,
 		contentType: "application/json;charset=UTF-8",
 		success: function(res) {
 			if(res && res.status == 1){
 				let data= res.data;
-				droit_id = data.id;
 				$("#droit_propor").val(data.droit_propor),
 				$("#droit_price").val(data.droit_price),
 				getValue($("input[name=limit1]"), data.is_propri)
@@ -316,7 +357,7 @@ function qlzqlinit(page){
 				let html = '';
 				for(let i = 0;i < res.data.length;i++){
 					html += '<tr>'+
-							'<th class="th" scope="row"><input type="radio" name="qlz" value="'+ res.data[i].id +'">'+ res.data[i].droit_propor +'</th>'+
+							'<th class="th" scope="row"><input type="radio" name="qlzz" value="'+ res.data[i].id +'">'+ res.data[i].droit_propor +'</th>'+
 							'<td>'+ res.data[i].ishave_contract +'</td>'+
 							'<td>'+ res.data[i].droit_mode +'</td>'+							
 							'<td>'+ res.data[i].sqxk_sydy +'</td>'+							
