@@ -486,13 +486,14 @@ function bindEvents(){
 				console.log(droit_ids)
 
 				let $tr2 = $(".yy-list tr");
-				let dro = [];
+				let dro = [],droold=[];
 				for(let b = 0;b < $tr2.length;b++){
 					dro.push($tr2[b].id)
+					droold.push($tr2[b].getAttribute("data-qid"))
 				}
-
+				var droit_olds = droold.distinct(); 
 				var opus_ids = dro.distinct(); 
-				console.log(opus_ids)
+				console.log(opus_ids,droit_olds)
 				
 				let $tr3 = $("#produc-fj-list tr");
 				let files = [];
@@ -510,7 +511,6 @@ function bindEvents(){
 				console.log(contract_ids)
 
 				console.log(cpnews)
-
 				let da = {
 					id: worksId,
 					product_code: cpnews.product_code,
@@ -527,6 +527,7 @@ function bindEvents(){
 					droit_startime:cpnews.droit_startime,
 					droit_endtime: cpnews.droit_endtime,
 					
+					droit_olds:droit_olds,
 					contract_ids: contract_ids,
 					droit_ids: droit_ids,
 					opus_ids: opus_ids,

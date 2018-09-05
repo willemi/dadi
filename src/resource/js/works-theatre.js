@@ -427,19 +427,23 @@ function bindEvents(){
 				pageSize: 20
 			}
 			$.ajax({
-				type: "POST",
+				type: "get",
 				url: host +"/dadi/droit/list",
-				data: JSON.stringify(jsond),
+				data: jsond,
 				dataType: "json",
 				cache: false,
 				contentType: "application/json;charset=UTF-8",
 				success: function(res) {
 					if(res && res.status == 1){
-						for(var i = 0;i < res.data.length;i++){
-							kkid.push(res.data[i].id)
+						$RightNews.html('')
+						if(res.data && res.data.length > 0){
+							for(var i = 0;i < res.data.length;i++){
+								kkid.push(res.data[i].id)
+							}
+							console.log(kkid)
+							$RightNews.html(itemSearchListLook1Tpl(res.data));
 						}
-						console.log(kkid)
-						$RightNews.html(itemSearchListLook1Tpl(res.data));
+						
 					}else{
 						util.showMsg(res.message)
 					}

@@ -72,6 +72,7 @@ function bindEvents(){
 
 	$("#modal-newly-added3").on('hidden.bs.modal', function () {
 		qizzId = ''
+		document.getElementById("add-form").reset();
 	})
 	util.timepickerSection("sqxk_ksrq", "sqxk_jsrq");	
 	$doc.on("click",".btn-news",function(){
@@ -91,6 +92,7 @@ function bindEvents(){
 			sqxk_sycs = $("#sqxk_sycs").val();
 
 		let data = {
+			droit_g_id:droit_g_id,
 			id: qizzId,
 			droit_propor: droit_propor,
 			droit_price: droit_price,
@@ -116,7 +118,9 @@ function bindEvents(){
 			contentType: "application/json;charset=UTF-8",
 			success: function(res) {
 				if(res && res.status == 1){
-					
+					setTimeout(() => {
+						location.reload();
+					}, 2000);
 				}
 				util.showMsg(res.message)
 			},
@@ -225,9 +229,13 @@ initpid(25, $(".mode"), "radio", "mode")
 
 function xg(){
 	$.ajax({
-		type: "POST",
-		url: host +"/dadi/droit/....",
-		data: {id: qizzId},
+		type: "get",
+		url: host +"/dadi/droit/findById",
+		data: {
+			pageNum: 1,
+			pageSize: 10,
+			id: qizzId
+		},
 		dataType: "json",
 		cache: false,
 		contentType: "application/json;charset=UTF-8",
@@ -256,7 +264,6 @@ function xg(){
 				getValue($("input[name=mode]"), data.sqxk_syqd)
 				$("#sqxk_sycs").val(data.sqxk_sycs);
 			}
-			util.showMsg(res.message)
 		},
 		error: function(error){
 			util.showMsg("error")
@@ -320,17 +327,22 @@ function qlzinit(page){
 		success: function(res) {
 			if(res && res.status == 1){
 				let html = '';
-				for(let i = 0;i < res.data.length;i++){
-					html += '<tr>'+
-							'<th class="th" scope="row"><input type="radio" name="qlz" value="'+ res.data[i].id +'" data-bz="'+ und(res.data[i].bz) +'" data-name="'+ res.data[i].name +'">'+ res.data[i].name +'</th>'+
-							'<td>'+ und(res.data[i].bz) +'</td>'+
-							'<td>'+ res.data[i].creat_time +'</td>'+
-							'</tr>';
-				}
-				$(".qlztr").html(html)
+				if(res.data && res.data.length > 0){
+					for(let i = 0;i < res.data.length;i++){
+						html += '<tr>'+
+								'<th class="th" scope="row"><input type="radio" name="qlz" value="'+ res.data[i].id +'" data-bz="'+ und(res.data[i].bz) +'" data-name="'+ res.data[i].name +'">'+ res.data[i].name +'</th>'+
+								'<td>'+ und(res.data[i].bz) +'</td>'+
+								'<td>'+ res.data[i].creat_time +'</td>'+
+								'</tr>';
+					}
+					$(".qlztr").html(html)
+				}else{
+					util.showMsg("无数据！")
+				}				
 			}else{
 				util.showMsg(res.message)
 			}
+			
 		},
 		error: function(error){
 			util.showMsg("error")
@@ -355,19 +367,22 @@ function qlzqlinit(page){
 		success: function(res) {
 			if(res && res.status == 1){
 				let html = '';
-				for(let i = 0;i < res.data.length;i++){
-					html += '<tr>'+
-							'<th class="th" scope="row"><input type="radio" name="qlzz" value="'+ res.data[i].id +'">'+ res.data[i].droit_propor +'</th>'+
-							'<td>'+ res.data[i].ishave_contract +'</td>'+
-							'<td>'+ res.data[i].droit_mode +'</td>'+							
-							'<td>'+ res.data[i].sqxk_sydy +'</td>'+							
-							'<td>'+ res.data[i].sqxk_syyy +'</td>'+
-							'<td>'+ res.data[i].sqxk_sycs +'</td>'+							
-							'<td>'+ res.data[i].sqxk_ksrq +'</td>'+
-							'<td>'+ res.data[i].sqxk_jsrq +'</td>'+	
-							'</tr>';
+				$(".qlzql").html('')
+				if(res.data && res.data.length > 0){					
+					for(let i = 0;i < res.data.length;i++){
+						html += '<tr>'+
+								'<th class="th" scope="row"><input type="radio" name="qlzz" value="'+ res.data[i].id +'">'+ res.data[i].droit_propor +'</th>'+
+								'<td>'+ res.data[i].ishave_contract +'</td>'+
+								'<td>'+ res.data[i].droit_mode +'</td>'+							
+								'<td>'+ res.data[i].sqxk_sydy +'</td>'+							
+								'<td>'+ res.data[i].sqxk_syyy +'</td>'+
+								'<td>'+ res.data[i].sqxk_sycs +'</td>'+							
+								'<td>'+ res.data[i].sqxk_ksrq +'</td>'+
+								'<td>'+ res.data[i].sqxk_jsrq +'</td>'+	
+								'</tr>';
+					}
+					$(".qlzql").html(html)
 				}
-				$(".qlzql").html(html)
 			}else{
 				util.showMsg(res.message)
 			}
