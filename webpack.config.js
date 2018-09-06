@@ -63,6 +63,11 @@ let output = {
 		}),
 		new CleanWebpackPlugin('public')
 	],
+	devServer = {
+		contentBase: path.join(__dirname, "public"),
+		inline: true,
+		open:true
+	},
 	optimization = {
 		splitChunks: {
 			chunks: "all", 
@@ -104,6 +109,7 @@ function getPlugin(dir) {
 module.exports = {
 	entry: getEntry('./src/resource/js'),
 	output,
+	devServer,
 	module: modules,
 	plugins: plugins.concat(getPlugin('./src')),
 	optimization

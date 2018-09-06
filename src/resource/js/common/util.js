@@ -8,12 +8,12 @@ import '../../css/sidebar-menu.css';
 import '../../css/font-awesome.css';
 $.sidebarMenu($('.sidebar-menu'))
 
-window.host = "http://"+ (location.host || "118.26.10.50:9999");
+//window.host = "http://"+ (location.host || "118.26.10.50:9999");
+window.host = "http://118.26.10.50:9999";
 const datetimepicker = require("./bootstrap-datetimepicker.min.js");
 const moment = require('./bootstrap-datetimepicker.zh-CN.js');
 const bootstrapPaginator = require("./bootstrap-paginator.js");
 const easyUpload = require("./easyUpload.js")
-
 let util = {};
 $('.modal').on('hidden.bs.modal', function () {
 	// 执行一些动作...
