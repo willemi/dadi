@@ -261,6 +261,7 @@ function xiugai(id){
 				product.sqxk_syqd = dr[0].sqxk_syqd
 				product.sqxk_sycs = dr[0].sqxk_sycs
 				product.droit_endtime = dr[0].droit_endtime
+				product.sqxk_ksrq = dr[0].droit_startime
 				$(".news-list").html(worksSearchList([product]))
 				let $tr1 = $(".news-list tr");
 				for(var i = 0;i < $tr1.length;i++){
@@ -538,6 +539,7 @@ function bindEvents(){
 					product_xingtai: cpnews.product_xingtai,
 					shou_quan_ren: cpnews.shou_quan_ren,
 					bei_shou_quan_ren: cpnews.bei_shou_quan_ren,
+					register_date: cpnews.register_date,
 
 					droit_startime:cpnews.droit_startime,
 					droit_endtime: cpnews.droit_endtime,
@@ -784,6 +786,8 @@ function bindEvents(){
 
 						res.data.opus_name = $modalRightInfoNameVal
 						res.data.opus_type = $modalRightInfoTypeVal
+
+						res.data.sqxk_ksrq = res.data.droit_startime
 						$("#xzql-list").append(worksSearchList([res.data]))
 						$(".xzql-list").show();
 						//$(".btn-news").addClass("modal-right-info-btn")
