@@ -330,9 +330,9 @@ function qlzinit(page){
 				if(res.data && res.data.length > 0){
 					for(let i = 0;i < res.data.length;i++){
 						html += '<tr>'+
-								'<th class="th" scope="row"><input type="radio" name="qlz" value="'+ res.data[i].id +'" data-bz="'+ und(res.data[i].bz) +'" data-name="'+ res.data[i].name +'">'+ res.data[i].name +'</th>'+
+								'<th class="th" scope="row"><input type="radio" name="qlz" value="'+ res.data[i].id +'" data-bz="'+ und(res.data[i].bz) +'" data-name="'+ res.data[i].name +'">'+ und(res.data[i].name) +'</th>'+
 								'<td>'+ und(res.data[i].bz) +'</td>'+
-								'<td>'+ res.data[i].creat_time +'</td>'+
+								'<td>'+ und(res.data[i].creat_time) +'</td>'+
 								'</tr>';
 					}
 					$(".qlztr").html(html)
@@ -371,14 +371,14 @@ function qlzqlinit(page){
 				if(res.data && res.data.length > 0){					
 					for(let i = 0;i < res.data.length;i++){
 						html += '<tr>'+
-								'<th class="th" scope="row"><input type="radio" name="qlzz" value="'+ res.data[i].id +'">'+ res.data[i].droit_propor +'</th>'+
-								'<td>'+ res.data[i].ishave_contract +'</td>'+
-								'<td>'+ res.data[i].droit_mode +'</td>'+							
-								'<td>'+ res.data[i].sqxk_sydy +'</td>'+							
-								'<td>'+ res.data[i].sqxk_syyy +'</td>'+
-								'<td>'+ res.data[i].sqxk_sycs +'</td>'+							
-								'<td>'+ res.data[i].sqxk_ksrq +'</td>'+
-								'<td>'+ res.data[i].sqxk_jsrq +'</td>'+	
+								'<th class="th" scope="row"><input type="radio" name="qlzz" value="'+ res.data[i].id +'">'+ und(res.data[i].droit_propor) +'</th>'+
+								'<td>'+ und(res.data[i].ishave_contract) +'</td>'+
+								'<td>'+ und(res.data[i].droit_mode) +'</td>'+							
+								'<td>'+ und(res.data[i].sqxk_sydy) +'</td>'+							
+								'<td>'+ und(res.data[i].sqxk_syyy) +'</td>'+
+								'<td>'+ und(res.data[i].sqxk_sycs) +'</td>'+							
+								'<td>'+ und(res.data[i].sqxk_ksrq) +'</td>'+
+								'<td>'+ und(res.data[i].sqxk_jsrq) +'</td>'+	
 								'</tr>';
 					}
 					$(".qlzql").html(html)

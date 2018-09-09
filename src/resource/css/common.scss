@@ -799,6 +799,12 @@ ul.step {
 	text-decoration: underline;
 	cursor: pointer;
 }
+table.td1 {
+	td:last-child(){
+		display:flex;
+		justify-content: space-between;
+	}	
+}
 .table {
 	padding:10px;
 	background:#fff;
@@ -843,6 +849,12 @@ li.li-4 {
 // }
 .show-z-5 .worksList-dele, .show-z-2 .btn-adda, .show-z-3 .works-list-edit, .show-z-4 .works-list-sh, .c-12 li {
 	display: block!important
+}
+#content .works-list-edit.hide,#content .works-list-bg.hide {
+	display: none!important;
+}
+#content .works-list-edit.show,#content .works-list-bg.show {
+	display: block!important;
 }
 .floww {
 	width:400px;

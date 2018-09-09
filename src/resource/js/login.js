@@ -42,6 +42,12 @@ function login(data){
 		success: function(res) {
             console.log(res)
 			if(res.status == 1){
+                let user_name = {
+                    account: $("#account").val()
+                };
+                user_name = JSON.stringify(user_name)
+                myStorage.setItem("user_name", user_name)
+
 				var data = res.data.perm;
                 data = JSON.stringify(data)
                 myStorage.setItem("user_mid", data)

@@ -56,6 +56,16 @@ window.formatobligee_you = function(state){
 			return '有';
 	}
 }
+
+window.showXg = function(state){
+	console.log(state)
+	switch(state){
+		case window._user_name.account:
+			return 'show';
+		default:
+			return 'hide';
+	}
+}
 let product_name;
 function workslist(page){
 	page = page || 1;

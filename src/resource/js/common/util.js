@@ -200,12 +200,16 @@ $.ajax({
 	success: function(res) {
 		if(res.status == -10){
 			util.showMsg(res.message)
-			// setTimeout(() => {
-			// 	location.href= "login.html"
-			// }, 2000);				
+			myStorage.removeItem("user_mid")
+			myStorage.removeItem("user_name")
+			setTimeout(() => {
+				// location.href= "login.html"
+			}, 2000);				
 		}
 	}
 })
+
+window._user_name = JSON.parse(myStorage.getItem("user_name"));			
 
 window.cookie = JSON.parse(myStorage.getItem("user_mid"));
 console.log(cookie)
@@ -350,6 +354,7 @@ $doc.on("click", ".out", function(){
 		contentType: "application/json;charset=UTF-8",
 		success: function(res) {
 			myStorage.removeItem("user_mid")
+			myStorage.removeItem("user_name")
             util.showMsg(res.message)
             setTimeout(() => {
 				location.href= "login.html"
@@ -404,7 +409,7 @@ function sh(url){
 			success: function(res) {
 				util.showMsg(res.message)
 				setTimeout(() => {
-					//location.reload();
+					location.reload();
 				}, 2000);
 			}
 	

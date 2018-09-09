@@ -190,9 +190,20 @@ initpid(25, $(".mode"), "radio", "mode")
 // 		case 0:
 // 			return '否';
 // 		case 1:
-// 			return '是';
-// 	}
-// }
+// 		
+window.showXg = function(state,status){
+	if(status != 1 && state == window._user_name.account){
+		return 'show';
+	}else{
+		return 'hide';
+	}
+	// switch(state){
+	// 	case window._user_name.account:
+	// 		return 'show';
+	// 	default:
+	// 		return 'hide';
+	// }
+}
 function qlzinit(page){
 	page = page || 1;
 	$.ajax({
@@ -405,6 +416,39 @@ function bindEvents(){
 	let kkid = [];
 	$("input[name='news']").on("click",function(){
 		$(".right-news").html("")
+		if($(this).val() == 1){
+			let jsond = {
+				droit_g_id: $(".sel-ly").val(),
+				pageNum: 1,
+				pageSize: 20
+			}
+			$.ajax({
+				type: "get",
+				url: host +"/dadi/droit/list",
+				data: jsond,
+				dataType: "json",
+				cache: false,
+				contentType: "application/json;charset=UTF-8",
+				success: function(res) {
+					if(res && res.status == 1){
+						$RightNews.html('')
+						if(res.data && res.data.length > 0){
+							for(var i = 0;i < res.data.length;i++){
+								kkid.push(res.data[i].id)
+							}
+							console.log(kkid)
+							$RightNews.html(itemSearchListLook1Tpl(res.data));
+						}
+						
+					}else{
+						util.showMsg(res.message)
+					}
+				},
+				error: function(error){
+					util.showMsg("error")
+				}
+			});
+		}
 	})
 	$("#query-reference").on("click", function(){		
 		let $val = $("input[name='news']:checked").val();

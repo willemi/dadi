@@ -84,7 +84,7 @@
                     <button type="button" id="exportProducBtn" class="btn btn-default">导出数据<i class="glyphicon glyphicon-download-alt"></i></button>
                 </div>
                 <div class="table-cont">
-                    <table class="table table-striped">
+                    <table class="table table-striped td1">
                         <thead>
                             <tr>
                                 <th>序号</th>
@@ -105,7 +105,7 @@
                                 <th>使用渠道限制</th>
                                 <th> 使用次数限制</th>
                                 <th>审核状态</th>
-                                <th style="width:160px">操作</th>
+                                <th style="width:100px!important">操作</th>
                             </tr>
                         </thead>
                         <tbody class="tabel-cont produc-list">
@@ -276,14 +276,14 @@
 <!--删除-->
 <%= require('html-loader!./include/modal-del.html') %>
 <div class="floww">
-    <a class="close-aa">X</a>
-    <div class="btn-floww">
-        <div class="ms"><label>原因</label><input type="text" id="miaosu"></div>
-        <div class="div-span">
-            <span class="floww-go">通过</span>
-            <span class="floww-out">未通过</span>
-        </div>		
+        <a class="close-aa">X</a>
+        <div class="btn-floww">
+            <div class="ms"><label>原因</label><input type="text" id="miaosu"></div>
+            <div class="div-span">
+                <span class="floww-go">通过</span>
+                <span class="floww-out">未通过</span>
+            </div>		
+        </div>
     </div>
-</div>
 </body>
 </html>

@@ -29,6 +29,19 @@ window.formatobligee_you = function(state){
 	}
 }
 
+window.showXg = function(state,status){
+	if(status != 1 && state == window._user_name.account){
+		return 'show';
+	}else{
+		return 'hide';
+	}
+	// switch(state){
+	// 	case window._user_name.account:
+	// 		return 'show';
+	// 	default:
+	// 		return 'hide';
+	// }
+}
 window.formatopus = function(state){
 	state = parseInt(state)
 	switch(state){

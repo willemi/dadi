@@ -59,6 +59,20 @@ window.formatobligee_you = function(state){
 			return '有';
 	}
 }
+
+window.showXg = function(state,status){
+	if(status != 1 && state == window._user_name.account){
+		return 'show';
+	}else{
+		return 'hide';
+	}
+	// switch(state){
+	// 	case window._user_name.account:
+	// 		return 'show';
+	// 	default:
+	// 		return 'hide';
+	// }
+}
 let worksId;
 let $cont1 = $(".content-01"),
 	$cont2 = $(".content-02");

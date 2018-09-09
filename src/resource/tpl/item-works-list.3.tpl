@@ -11,7 +11,7 @@
 	<td>{{!m.create_time}}</td>
 	<td>{{!m.creater}}</td>
 	<td id="{{!m.id}}">
-		<button class="btn btn-primary works-list-edit" data-classify="{{!m.opus_classify}}">修改</button>
+		<button class="btn btn-primary works-list-edit {{!showXg(m.creater,m.data_status)}}" data-classify="{{!m.opus_classify}}">修改</button>
 		<button class="btn btn-default worksList-dele">删除</button>
 	</td>
 </tr>
