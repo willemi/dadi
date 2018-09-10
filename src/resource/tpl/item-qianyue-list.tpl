@@ -1,7 +1,7 @@
 {{~it :m:n}}
 <tr id="{{!m.id}}">
-	<th class="th" scope="row">{{=formatobligee_sign(m.sign_type)}}</th>
-	<td>{{=m.sign_name}}</td>
+	<th class="th" scope="row">{{!m.sign_type}}</th>
+	<td>{{!m.sign_name}}</td>
 	<td>{{!m.sign_phone}}</td>
 	<td>{{!m.sign_person}}</td>
 	<td>{{!m.sign_address}}</td>

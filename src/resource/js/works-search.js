@@ -28,9 +28,9 @@ window.formatobligee_you = function(state){
 			return '有';
 	}
 }
-
+let c = window._user_name && window._user_name.account || '';
 window.showXg = function(state,status){
-	if(status != 1 && state == window._user_name.account){
+	if(status != 1 && state == c){
 		return 'show';
 	}else{
 		return 'hide';

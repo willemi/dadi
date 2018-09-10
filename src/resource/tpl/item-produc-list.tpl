@@ -1,7 +1,7 @@
 {{~it :m:n}}
 //{{=m.vid_num || 0}}
 <tr>
-	<th scope="row">{{!n+1}}</th>
+	<th scope="row">{{!n+1 + m.page}}</th>
 	<td><a class="btn-details aaa" data-id="{{!m.id}}">{{!m.product_code}}</a></td>
 	<td>{{!m.product_name}}</td>
 	<td>{{!m.product_type}}</td>

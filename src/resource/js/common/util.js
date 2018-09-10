@@ -270,9 +270,9 @@ util.fileFun = (url, reslo) => {
 		allowFileSize: 100000,//允许上传文件大小(KB)
 		selectText: '选择文件',//选择文件按钮文案
 		multi: true,//是否允许多文件上传
-		multiNum: 6,//多文件上传时允许的文件数
+		multiNum: 666666,//多文件上传时允许的文件数
 		showNote: true,//是否展示文件上传说明
-		note: '提示：最多上传6个文件，支持格式为doc,docx,xls,xlsx,ppt,pptx,pdf,df,png.jpg.bmp,jpe,jpeg,gif,txt',//文件上传说明
+		note: '提示：支持格式为doc,docx,xls,xlsx,ppt,pptx,pdf,df,png.jpg.bmp,jpe,jpeg,gif,txt',//文件上传说明
 		showPreview: false,//是否显示文件预览
 		url: url,//上传文件地址
 		fileName: 'file',//文件filename配置参数

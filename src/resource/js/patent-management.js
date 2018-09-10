@@ -429,68 +429,80 @@ function bindEvents(){
 			$contractPartyPistHtml = $("#contract-party-list").html();
 		
 		//提交
-		if(util.isEmpty($contractNumVal) || util.isEmpty($contractNameVal) || util.isEmpty($contractMoneyVal) || util.isEmpty($contractSigningTimeVal)){
-			util.showMsg("合同编号、合同名称、合同金额、签约日期不能为空！")
+		if(util.isEmpty($contractNumVal)){
+			util.showMsg("合同编号不能为空！")
 			return
-		}else{
-			let $tr1 = $("#contract-party-list tr");
-			let sign_ids = [];
-			for(let a = 0;a < $tr1.length;a++){
-				sign_ids.push($tr1[a].id)
-			}
-			console.log(sign_ids)
-			
-			let $tr3 = $("#contract-appendices-list tr");
-			let files = [];
-			for(let c = 0;c < $tr3.length;c++){
-				files.push($tr3[c].id)
-			}
-			console.log(files)
-			let da = {
-				contract_code: $contractNumVal,
-				//contract_subject: $contractSubVal,
-				contract_name: $contractNameVal,
-				contract_amount: $contractMoneyVal,
-				sign_date: $contractSigningTimeVal,
-				effect_date: $contractYakeTimeVal,
-				invalid_date: $contractInvalidTimeVal,
-				effect_period: $contractYesTimeVal,
-				pay_plan: $contractPaymentPlanVal,
-				pay_standard: $contractPaymentMethodVal,
-				contract_explain: $contractNotesVal,
-				sign_ids: sign_ids,
-				files: files
-			}
-			$.ajax({
-				type: "POST",
-				url: host +"/dadi/contract/update",
-				data: JSON.stringify(da),				
-				dataType: "json",
-				cache: false,
-				contentType: "application/json;charset=UTF-8",
-				success: function(res) {
-					if(res && res.status == 1){
-						console.log(res)
-						util.showMsg("提交成功！")
+		}
+		if(util.isEmpty($contractNameVal)){
+			util.showMsg("合同名称不能为空！")
+			return
+		}
+		if(util.isEmpty($contractMoneyVal)){
+			util.showMsg("合同金额不能为空！")
+			return
+		}
+		if(util.isEmpty($contractSigningTimeVal)){
+			util.showMsg("签约日期不能为空！")
+			return
+		}
+		
+		let $tr1 = $("#contract-party-list tr");
+		let sign_ids = [];
+		for(let a = 0;a < $tr1.length;a++){
+			sign_ids.push($tr1[a].id)
+		}
+		console.log(sign_ids)
+		
+		let $tr3 = $("#contract-appendices-list tr");
+		let files = [];
+		for(let c = 0;c < $tr3.length;c++){
+			files.push($tr3[c].id)
+		}
+		console.log(files)
+		let da = {
+			contract_code: $contractNumVal,
+			//contract_subject: $contractSubVal,
+			contract_name: $contractNameVal,
+			contract_amount: $contractMoneyVal,
+			sign_date: $contractSigningTimeVal,
+			effect_date: $contractYakeTimeVal,
+			invalid_date: $contractInvalidTimeVal,
+			effect_period: $contractYesTimeVal,
+			pay_plan: $contractPaymentPlanVal,
+			pay_standard: $contractPaymentMethodVal,
+			contract_explain: $contractNotesVal,
+			sign_ids: sign_ids,
+			files: files
+		}
+		$.ajax({
+			type: "POST",
+			url: host +"/dadi/contract/update",
+			data: JSON.stringify(da),				
+			dataType: "json",
+			cache: false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(res) {
+				if(res && res.status == 1){
+					console.log(res)
+					util.showMsg("提交成功！")
 
-						//合同详情选取
-						let dataId = res.data.contract_name +"-"+ res.data.id;
-												
+					//合同详情选取
+					let dataId = res.data.contract_name +"-"+ res.data.id;
+											
 
-						$(".htn-list-xq").html(searchListProduc([res.data]));
-						$(".htn-list-xq input").remove();
-						$(".htn-list-xq tr").attr("data-id", dataId)
+					$(".htn-list-xq").html(searchListProduc([res.data]));
+					$(".htn-list-xq input").remove();
+					$(".htn-list-xq tr").attr("data-id", dataId)
 
-						$('#modal-createContract-produc').modal('hide');
-					}else{
-						util.showMsg(res.message)
-					}					
-				},
-				error: function(error){
-					util.showMsg("error")
-				}
-			});	
-		}		
+					$('#modal-createContract-produc').modal('hide');
+				}else{
+					util.showMsg(res.message)
+				}					
+			},
+			error: function(error){
+				util.showMsg("error")
+			}
+		});	
 	})	
 	//附件
 	let className;
@@ -572,10 +584,14 @@ function bindEvents(){
 			$modalContractIphoneVal = $modalContractIphone.val(),
 			$modalContractPepoVal = $modalContractPepo.val(),
 			$modalContractDizVal = $modalContractDiz.val();
-		if(util.isEmpty($modalContractPartyVal) || util.isEmpty($modalContractNameVal)){
-			util.showMsg("签约方类型、签约方名称不能为空！")
-			return
-		}else{
+			if(util.isEmpty($modalContractPartyVal)){
+				util.showMsg("签约方类型不能为空！")
+				return
+			}
+			if(util.isEmpty($modalContractNameVal)){
+				util.showMsg("签约方名称不能为空！")
+				return
+			}
 			let $id = $(this).attr("id");
 			let jsond = {
 				id: $id,
@@ -620,8 +636,7 @@ function bindEvents(){
 				error: function(error){
 					util.showMsg("error")
 				}
-			});			
-		}
+			});	
 	})
 	//修改
 	$doc.on("click", ".btn-qiany-list-edit", function(){
@@ -717,10 +732,22 @@ function bindEvents(){
 
 			$contract_idVal = $("#mark_contract_id").val();
 
-		if(util.isEmpty($droit_sttus) || util.isEmpty($certificate_number) || util.isEmpty($qllxVal) || util.isEmpty($nameVal) || util.isEmpty($designerVal) || util.isEmpty($numberVal)){
-			util.showMsg("证书号，权利状态，权利类型，专利名称，发明人/设计人，专利号不能为空！")
-			//return
-		}else {
+		if(util.isEmpty($certificate_number)){
+			util.showMsg("证书号不能为空！")
+			return
+		}
+		if(util.isEmpty($nameVal)){
+			util.showMsg("专利名称不能为空！")
+			return
+		}
+		if(util.isEmpty($designerVal)){
+			util.showMsg("发明人/设计人不能为空！")
+			return
+		}
+		if(util.isEmpty($numberVal)){
+			util.showMsg("专利号不能为空！")
+			return
+		}
 			// let $tr1 = $("#contract-party-list tr");
 			// let sign_ids = [];
 			// for(let a = 0;a < $tr1.length;a++){
@@ -801,9 +828,7 @@ function bindEvents(){
 				error: function(error){
 					util.showMsg("error")
 				}
-			});	
-		}
-		
+			});
 	})
 	$doc.on("click", ".btn-dile", function(){
 		let id = $(this).attr("id")

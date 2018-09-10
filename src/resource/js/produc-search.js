@@ -56,11 +56,11 @@ window.formatobligee_you = function(state){
 			return '有';
 	}
 }
-
+let c = window._user_name && window._user_name.account || '';
 window.showXg = function(state){
 	console.log(state)
 	switch(state){
-		case window._user_name.account:
+		case c:
 			return 'show';
 		default:
 			return 'hide';

@@ -193,8 +193,9 @@ initpid(25, $(".mode"), "radio", "mode")
 // 			return '是';
 // 	}
 // }
+let c = window._user_name && window._user_name.account || '';
 window.showXg = function(state,status){
-	if(status != 1 && state == window._user_name.account){
+	if(status != 1 && state == c){
 		return 'show';
 	}else{
 		return 'hide';
@@ -700,12 +701,23 @@ function bindEvents(){
 		if($this.hasClass("next-step-01")){
 			//第一步
 			
-			if(util.isEmpty($contractNumVal) || util.isEmpty($contractNameVal) || util.isEmpty($contractMoneyVal) || util.isEmpty($contractSigningTimeVal)){
-				util.showMsg("合同编号、合同名称、合同金额、签约日期不能为空！")
+			if(util.isEmpty($contractNumVal)){
+				util.showMsg("合同编号不能为空！")
 				return
-			}else{
-				nextBtn($this, $stepa);
-			}			
+			}
+			if(util.isEmpty($contractNameVal)){
+				util.showMsg("合同名称不能为空！")
+				return
+			}
+			if(util.isEmpty($contractMoneyVal)){
+				util.showMsg("合同金额不能为空！")
+				return
+			}
+			if(util.isEmpty($contractSigningTimeVal)){
+				util.showMsg("签约日期不能为空！")
+				return
+			}
+			nextBtn($this, $stepa);
 
 		}else if($this.hasClass("next-step-02")) {
 			//第二步
@@ -876,56 +888,59 @@ function bindEvents(){
 			$modalContractIphoneVal = $modalContractIphone.val(),
 			$modalContractPepoVal = $modalContractPepo.val(),
 			$modalContractDizVal = $modalContractDiz.val();
-		if(util.isEmpty($modalContractPartyVal) || util.isEmpty($modalContractNameVal)){
-			util.showMsg("签约方类型、签约方名称不能为空！")
+		if(util.isEmpty($modalContractPartyVal)){
+			util.showMsg("签约方类型不能为空！")
 			return
-		}else{
-			let $id = $(this).attr("id");
-			let jsond = {
-				id: $id,
-				sign_name: $modalContractNameVal,
-				sign_type: $modalContractPartyVal,
-				sign_phone: $modalContractIphoneVal,
-				sign_person:  $modalContractPepoVal,
-				sign_address: $modalContractDizVal
-			}
-			let pushD = true;
-			if(qyListJson.length > 0){//有数据判断是修改还是增加
-				for(var i = 0;i < qyListJson.length;i++){
-					if(qyListJson[i] && qyListJson[i].id == $id){ //修改
-						$.extend(qyListJson[i], jsond);
-						pushD = false;
-						break
-					}
-				}
-			}
-			$.ajax({
-				type: "POST",
-				url: host +"/dadi/sign/update",
-				data: JSON.stringify(jsond),
-				dataType: "json",
-				cache: false,
-				contentType: "application/json;charset=UTF-8",
-				success: function(res) {
-					if(res && res.status == 1){
-						if(pushD){
-							jsond.id = res.data.id;
-							qyListJson.push(jsond);
-						}
-						document.getElementById("qianyForm").reset();
-						$this.attr("id", "")						
-						console.log(qyListJson)
-						$("#contract-party-list").html(qianyuetTpl(qyListJson));
-						$('#modal-signatoryInformation').modal('hide');
-					}else{
-						util.showMsg(res.message)
-					}
-				},
-				error: function(error){
-					util.showMsg("error")
-				}
-			});			
 		}
+		if(util.isEmpty($modalContractNameVal)){
+			util.showMsg("签约方名称不能为空！")
+			return
+		}
+		let $id = $(this).attr("id");
+		let jsond = {
+			id: $id,
+			sign_name: $modalContractNameVal,
+			sign_type: $modalContractPartyVal,
+			sign_phone: $modalContractIphoneVal,
+			sign_person:  $modalContractPepoVal,
+			sign_address: $modalContractDizVal
+		}
+		let pushD = true;
+		if(qyListJson.length > 0){//有数据判断是修改还是增加
+			for(var i = 0;i < qyListJson.length;i++){
+				if(qyListJson[i] && qyListJson[i].id == $id){ //修改
+					$.extend(qyListJson[i], jsond);
+					pushD = false;
+					break
+				}
+			}
+		}
+		$.ajax({
+			type: "POST",
+			url: host +"/dadi/sign/update",
+			data: JSON.stringify(jsond),
+			dataType: "json",
+			cache: false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(res) {
+				if(res && res.status == 1){
+					if(pushD){
+						jsond.id = res.data.id;
+						qyListJson.push(jsond);
+					}
+					document.getElementById("qianyForm").reset();
+					$this.attr("id", "")						
+					console.log(qyListJson)
+					$("#contract-party-list").html(qianyuetTpl(qyListJson));
+					$('#modal-signatoryInformation').modal('hide');
+				}else{
+					util.showMsg(res.message)
+				}
+			},
+			error: function(error){
+				util.showMsg("error")
+			}
+		});	
 	})
 	//修改
 	$doc.on("click", ".btn-qiany-list-edit", function(){
@@ -1024,67 +1039,74 @@ function bindEvents(){
 			mode0 = showArr("mode0"),
 			language = $("input[name='language']:checked").val(),
 			mode = $("input[name='mode']:checked").val();
-		if(util.isEmpty($modalRightInfoNameVal) || util.isEmpty($modalRightInfoSVal) || util.isEmpty($modalRightInfoSqrVal)){
-			util.showMsg("作品名称、授权人、被授权人不能为空！")
+		if(util.isEmpty($modalRightInfoNameVal)){
+			util.showMsg("作品名称不能为空！")
 			return
-		}else{
-			let data = {
-				opus_name: $modalRightInfoNameVal,
-				peri_num: $modalRightInfoSetVal,
-				unit_price: $modalRightInfoUntilVal,
-				droit_subject: $modalRightInfoSVal,
-				bdroit_per: $modalRightInfoSqrVal,
-				droit_propor: $modalRightInfoSqpVal,
-				droit_price: $modalRightInfoSqmVal,
-				is_propri: $limit1Val,
-				ishave_contract: mode0,
-				droit_content: $modalRightInfoQldescVal,
-				sqxk_ksrq: $datetimeStartVal,
-				sqxk_jsrq: $datetimeEndVal,
-				droit_mode: $limit3Val,
-				sqxk_sydy: $limit5Val,
-				sqxk_syyy: language,
-				is_deleg: $limit4Val,
-				is_wripr: $limitVal,
-				sqxk_syqd: mode,
-				sqxk_sycs: $modalRightInfoFVal,
-				htql_ms: $modalRightInfoDescVal,
-				droit_des: $modalRightInfoRemarks
-			}
-			console.log(data)
-			$.ajax({
-				type: "POST",
-				url: host +"/dadi/droit/update",
-				data: JSON.stringify(data),
-				dataType: "json",
-				cache: false,
-				contentType: "application/json;charset=UTF-8",
-				success: function(res) {
-					if(res && res.status == 1){
-						console.log(1)
-						data.id = res.data.id;
-						data._id = $("#contract-name").val() +"-"+ data.id;
-						$(".qlnews-list").append(itemSearchListLook4Tpl([data]));
-						let $tr2 = $(".qlnews-list").find("tr");
-						var htmla = '<td class="h"><button type="button" class="btn btn-default btn-upload-dele">删除</button></td>'
-						for(var i = 0;i < $tr2.length;i++){
-							if($tr2[i].className == "bto"){
-							}else{
-								$(htmla).appendTo($tr2[i])
-								$tr2[i].className = "bto";
-							}	
-						}
-						//document.getElementById("ht-add").reset();
-						$('#modal-newly-added1').modal('hide');
-					}else{
-						util.showMsg(res.message)
-					}
-				},
-				error: function(error){
-					util.showMsg("error")
-				}
-			});
 		}
+		if(util.isEmpty($modalRightInfoSVal)){
+			util.showMsg("授权人不能为空！")
+			return
+		}
+		if(util.isEmpty($modalRightInfoSqrVal)){
+			util.showMsg("被授权人不能为空！")
+			return
+		}
+		let data = {
+			opus_name: $modalRightInfoNameVal,
+			peri_num: $modalRightInfoSetVal,
+			unit_price: $modalRightInfoUntilVal,
+			droit_subject: $modalRightInfoSVal,
+			bdroit_per: $modalRightInfoSqrVal,
+			droit_propor: $modalRightInfoSqpVal,
+			droit_price: $modalRightInfoSqmVal,
+			is_propri: $limit1Val,
+			ishave_contract: mode0,
+			droit_content: $modalRightInfoQldescVal,
+			sqxk_ksrq: $datetimeStartVal,
+			sqxk_jsrq: $datetimeEndVal,
+			droit_mode: $limit3Val,
+			sqxk_sydy: $limit5Val,
+			sqxk_syyy: language,
+			is_deleg: $limit4Val,
+			is_wripr: $limitVal,
+			sqxk_syqd: mode,
+			sqxk_sycs: $modalRightInfoFVal,
+			htql_ms: $modalRightInfoDescVal,
+			droit_des: $modalRightInfoRemarks
+		}
+		console.log(data)
+		$.ajax({
+			type: "POST",
+			url: host +"/dadi/droit/update",
+			data: JSON.stringify(data),
+			dataType: "json",
+			cache: false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(res) {
+				if(res && res.status == 1){
+					console.log(1)
+					data.id = res.data.id;
+					data._id = $("#contract-name").val() +"-"+ data.id;
+					$(".qlnews-list").append(itemSearchListLook4Tpl([data]));
+					let $tr2 = $(".qlnews-list").find("tr");
+					var htmla = '<td class="h"><button type="button" class="btn btn-default btn-upload-dele">删除</button></td>'
+					for(var i = 0;i < $tr2.length;i++){
+						if($tr2[i].className == "bto"){
+						}else{
+							$(htmla).appendTo($tr2[i])
+							$tr2[i].className = "bto";
+						}	
+					}
+					//document.getElementById("ht-add").reset();
+					$('#modal-newly-added1').modal('hide');
+				}else{
+					util.showMsg(res.message)
+				}
+			},
+			error: function(error){
+				util.showMsg("error")
+			}
+		});
 	})
 	$doc.on("click", ".modal-right-info-rest", function(){
 		document.getElementById("ht-add").reset();
@@ -1119,11 +1141,23 @@ function bindEvents(){
 			$obligeeListHtml = $(".obligee-list").html();
 		if($this.hasClass("next-step-01")){
 			//第一步			
-			if(util.isEmpty($workNameVal) || util.isEmpty($workTypeVal) || util.isEmpty($themeTypeVal) || util.isEmpty($lenghtTimeVal)){
-				util.showMsg("作品名称、作品类型、作品题材、作品时长不能为空！")
-			}else{
-				nextBtn($this, $step);
-			}			
+			if(util.isEmpty($workNameVal)){
+				util.showMsg("作品名称不能为空！")
+				return;
+			}
+			if(util.isEmpty($workTypeVal)){
+				util.showMsg("作品类型不能为空！")
+				return;
+			}
+			if(util.isEmpty($themeTypeVal)){
+				util.showMsg("作品题材不能为空！")
+				return;
+			}
+			if(util.isEmpty($lenghtTimeVal)){
+				util.showMsg("作品时长不能为空！")
+				return;
+			}
+			nextBtn($this, $step);
 		}else if($this.hasClass("next-step-02")) {
 			//第二步
 			let $rightNewsHtml = $RightNews.html();
@@ -1265,57 +1299,60 @@ function bindEvents(){
 			$modalObligeeRemunerationVal = $modalObligeeRemuneration.val(),
 			$modalObligeeCurrencyVal = $modalObligeeCurrency.val(),
 			$modalObligeeMoneyVal = $modalObligeeMoney.val();
-		if(util.isEmpty($modalObligeeNameVal) || util.isEmpty($modalObligeeTypeVal)){
-			util.showMsg("权利人名称，权利人类型不能为空！")
+		if(util.isEmpty($modalObligeeNameVal)){
+			util.showMsg("权利人名称不能为空！")
 			return
-		}else{
-			let $id = $(this).attr("id");
-			let jsond = {
-				id: $id,
-				obligee_name: $modalObligeeNameVal,
-				obligee_type: $modalObligeeTypeVal,
-				is_pay: $modalObligeeRemunerationVal,
-				currency:  $modalObligeeCurrencyVal,
-				pay_amount: $modalObligeeMoneyVal
-			}
-			let pushD = true;
-			if(qlListJson.length > 0){//有数据判断是修改还是增加
-				for(var i = 0;i < qlListJson.length;i++){
-					if(qlListJson[i] && qlListJson[i].id == $id){ //修改
-						$.extend(qlListJson[i], jsond);
-						pushD = false;
-						break
-					}
-				}
-			}
-			
-			console.log(jsond.id)
-			$.ajax({
-				type: "POST",
-				url: host +"/dadi/obligee/update",
-				data: JSON.stringify(jsond),
-				dataType: "json",
-				cache: false,
-				contentType: "application/json;charset=UTF-8",
-				success: function(res) {
-					if(res && res.status == 1){
-						if(pushD){
-							qlListJson.push(res.data);
-						}
-						document.getElementById("qbligForm").reset();
-						$this.attr("id", "")						
-						console.log(qlListJson)
-						$(".obligee-list").html(obligeeListTpl(qlListJson));
-						$('#modal-qbligeeAdd').modal('hide');
-					}else{
-						util.showMsg(res.message)
-					}
-				},
-				error: function(error){
-					util.showMsg("error")
-				}
-			});
 		}
+		if(util.isEmpty($modalObligeeTypeVal)){
+			util.showMsg("权利人类型不能为空！")
+			return
+		}
+		let $id = $(this).attr("id");
+		let jsond = {
+			id: $id,
+			obligee_name: $modalObligeeNameVal,
+			obligee_type: $modalObligeeTypeVal,
+			is_pay: $modalObligeeRemunerationVal,
+			currency:  $modalObligeeCurrencyVal,
+			pay_amount: $modalObligeeMoneyVal
+		}
+		let pushD = true;
+		if(qlListJson.length > 0){//有数据判断是修改还是增加
+			for(var i = 0;i < qlListJson.length;i++){
+				if(qlListJson[i] && qlListJson[i].id == $id){ //修改
+					$.extend(qlListJson[i], jsond);
+					pushD = false;
+					break
+				}
+			}
+		}
+		
+		console.log(jsond.id)
+		$.ajax({
+			type: "POST",
+			url: host +"/dadi/obligee/update",
+			data: JSON.stringify(jsond),
+			dataType: "json",
+			cache: false,
+			contentType: "application/json;charset=UTF-8",
+			success: function(res) {
+				if(res && res.status == 1){
+					if(pushD){
+						qlListJson.push(res.data);
+					}
+					document.getElementById("qbligForm").reset();
+					$this.attr("id", "")						
+					console.log(qlListJson)
+					$(".obligee-list").html(obligeeListTpl(qlListJson));
+					$('#modal-qbligeeAdd').modal('hide');
+				}else{
+					util.showMsg(res.message)
+				}
+			},
+			error: function(error){
+				util.showMsg("error")
+			}
+		});
 	})
 	//修改
 	$doc.on("click", ".btn-obligee-list-edit", function(){

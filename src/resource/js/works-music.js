@@ -194,8 +194,9 @@ initpid(25, $(".mode"), "radio", "mode")
 // 	}
 // }
 // window._user_name.account= 4
+let c = window._user_name && window._user_name.account || '';
 window.showXg = function(state,status){
-	if(status != 1 && state == window._user_name.account){
+	if(status != 1 && state == c){
 		return 'show';
 	}else{
 		return 'hide';
@@ -701,12 +702,23 @@ function bindEvents(){
 		if($this.hasClass("next-step-01")){
 			//第一步
 			
-			if(util.isEmpty($contractNumVal) || util.isEmpty($contractNameVal) || util.isEmpty($contractMoneyVal) || util.isEmpty($contractSigningTimeVal)){
-				util.showMsg("合同编号、合同名称、合同金额、签约日期不能为空！")
+			if(util.isEmpty($contractNumVal)){
+				util.showMsg("合同编号不能为空！")
 				return
-			}else{
-				nextBtn($this, $stepa);
-			}			
+			}
+			if(util.isEmpty($contractNameVal)){
+				util.showMsg("合同名称不能为空！")
+				return
+			}
+			if(util.isEmpty($contractMoneyVal)){
+				util.showMsg("合同金额不能为空！")
+				return
+			}
+			if(util.isEmpty($contractSigningTimeVal)){
+				util.showMsg("签约日期不能为空！")
+				return
+			}
+			nextBtn($this, $stepa);
 
 		}else if($this.hasClass("next-step-02")) {
 			//第二步
@@ -877,10 +889,14 @@ function bindEvents(){
 			$modalContractIphoneVal = $modalContractIphone.val(),
 			$modalContractPepoVal = $modalContractPepo.val(),
 			$modalContractDizVal = $modalContractDiz.val();
-		if(util.isEmpty($modalContractPartyVal) || util.isEmpty($modalContractNameVal)){
-			util.showMsg("签约方类型、签约方名称不能为空！")
+		if(util.isEmpty($modalContractPartyVal)){
+			util.showMsg("签约方类型不能为空！")
 			return
-		}else{
+		}
+		if(util.isEmpty($modalContractNameVal)){
+			util.showMsg("签约方名称不能为空！")
+			return
+		}
 			let $id = $(this).attr("id");
 			let jsond = {
 				id: $id,
@@ -897,9 +913,9 @@ function bindEvents(){
 						$.extend(qyListJson[i], jsond);
 						pushD = false;
 						break
-					}
 				}
 			}
+		}
 			$.ajax({
 				type: "POST",
 				url: host +"/dadi/sign/update",
@@ -926,7 +942,6 @@ function bindEvents(){
 					util.showMsg("error")
 				}
 			});			
-		}
 	})
 	//修改
 	$doc.on("click", ".btn-qiany-list-edit", function(){
@@ -1025,10 +1040,18 @@ function bindEvents(){
 			mode0 = showArr("mode0"),
 			language = $("input[name='language']:checked").val(),
 			mode = $("input[name='mode']:checked").val();
-		if(util.isEmpty($modalRightInfoNameVal) || util.isEmpty($modalRightInfoSVal) || util.isEmpty($modalRightInfoSqrVal)){
-			util.showMsg("作品名称、授权人、被授权人不能为空！")
+		if(util.isEmpty($modalRightInfoNameVal)){
+			util.showMsg("作品名称不能为空！")
 			return
-		}else{
+		}
+		if(util.isEmpty($modalRightInfoSVal)){
+			util.showMsg("授权人不能为空！")
+			return
+		}
+		if(util.isEmpty($modalRightInfoSqrVal)){
+			util.showMsg("被授权人不能为空！")
+			return
+		}
 			let data = {
 				opus_name: $modalRightInfoNameVal,
 				peri_num: $modalRightInfoSetVal,
@@ -1074,18 +1097,17 @@ function bindEvents(){
 								$(htmla).appendTo($tr2[i])
 								$tr2[i].className = "bto";
 							}	
-						}
-						//document.getElementById("ht-add").reset();
-						$('#modal-newly-added1').modal('hide');
-					}else{
-						util.showMsg(res.message)
 					}
-				},
-				error: function(error){
-					util.showMsg("error")
+					//document.getElementById("ht-add").reset();
+					$('#modal-newly-added1').modal('hide');
+				}else{
+					util.showMsg(res.message)
 				}
-			});
-		}
+			},
+			error: function(error){
+				util.showMsg("error")
+			}
+		});
 	})
 	$doc.on("click", ".modal-right-info-rest", function(){
 		document.getElementById("ht-add").reset();
@@ -1120,11 +1142,23 @@ function bindEvents(){
 			$obligeeListHtml = $(".obligee-list").html();
 		if($this.hasClass("next-step-01")){
 			//第一步			
-			if(util.isEmpty($workNameVal) || util.isEmpty($workTypeVal) || util.isEmpty($themeTypeVal) || util.isEmpty($lenghtTimeVal)){
-				util.showMsg("作品名称、作品类型、作品题材、作品时长不能为空！")
-			}else{
-				nextBtn($this, $step);
-			}			
+			if(util.isEmpty($workNameVal)){
+				util.showMsg("作品名称不能为空！")
+				return;
+			}
+			if(util.isEmpty($workTypeVal)){
+				util.showMsg("作品类型不能为空！")
+				return;
+			}
+			if(util.isEmpty($themeTypeVal)){
+				util.showMsg("作品题材不能为空！")
+				return;
+			}
+			if(util.isEmpty($lenghtTimeVal)){
+				util.showMsg("作品时长不能为空！")
+				return;
+			}
+			nextBtn($this, $step);
 		}else if($this.hasClass("next-step-02")) {
 			//第二步
 			let $rightNewsHtml = $RightNews.html();
@@ -1267,10 +1301,14 @@ function bindEvents(){
 			$modalObligeeRemunerationVal = $modalObligeeRemuneration.val(),
 			$modalObligeeCurrencyVal = $modalObligeeCurrency.val(),
 			$modalObligeeMoneyVal = $modalObligeeMoney.val();
-		if(util.isEmpty($modalObligeeNameVal) || util.isEmpty($modalObligeeTypeVal)){
-			util.showMsg("权利人名称，权利人类型不能为空！")
+		if(util.isEmpty($modalObligeeNameVal)){
+			util.showMsg("权利人名称不能为空！")
 			return
-		}else{
+		}
+		if(util.isEmpty($modalObligeeTypeVal)){
+			util.showMsg("权利人类型不能为空！")
+			return
+		}
 			let $id = $(this).attr("id");
 			let jsond = {
 				id: $id,
@@ -1287,9 +1325,9 @@ function bindEvents(){
 						$.extend(qlListJson[i], jsond);
 						pushD = false;
 						break
-					}
 				}
 			}
+		}
 			
 			console.log(jsond.id)
 			$.ajax({
@@ -1317,7 +1355,6 @@ function bindEvents(){
 					util.showMsg("error")
 				}
 			});
-		}
 	})
 	//修改
 	$doc.on("click", ".btn-obligee-list-edit", function(){
