@@ -321,6 +321,14 @@ function xiugai(id){
 }
 function bindEvents(){
 	var $doc = $(document);
+	$("#modal-right-info-numb").focus(function(){
+		var outTradeNo="";  //订单号
+		for(var i=0;i<3;i++){
+			outTradeNo += Math.floor(Math.random()*10);
+		}
+		outTradeNo = new Date().getTime() + outTradeNo;  //时间戳，用来生成订单号。
+		$(this).val(outTradeNo)
+	})
 	$doc.on("click", ".worksList-dele", function(){
 		var delete_id = $(this).parent("td").attr("id");// 获取隐藏的ID
 		$("#deleteHaulId").val(delete_id);// 将模态框中需要删除的大修的ID设为需要删除的ID
@@ -851,6 +859,18 @@ function bindEvents(){
 			}
 		}
 	}
+	function getCValue(checkbox, $val){
+		$val = $val.split(",") || $val;
+		for ( var i = 0; i < checkbox.length; i++) {
+			var $this = checkbox[i];
+			for(var j = 0;j < $val.length;j++){
+				if($this.value == $val[j]){
+					$this.checked = true
+				}
+			}
+			
+		}
+	}
 	$doc.on("click", ".add-n-list input[name=work-list]", function(){
 		var checkbox = $(".add-n-list input[name=work-list]");		
 		let id = getAllids(checkbox);
@@ -870,7 +890,7 @@ function bindEvents(){
 					var data = res.data;
 					//授权权利
 					if(data.ishave_contract){
-						getValue($("input[name=mode0]"), data.ishave_contract)
+						getCValue($("input[name=mode0]"), data.ishave_contract)
 					}
 					//授权方式
 					if(data.droit_mode){
@@ -897,12 +917,12 @@ function bindEvents(){
 						getValue($("input[name=mode]"), data.sqxk_syqd)
 					}
 					//授权开始时间
-					if(data.droit_startime){
-						$("#datetimeStart").val(data.droit_startime);
+					if(data.droit_startime || data.sqxk_ksrq){
+						$("#datetimeStart").val(data.droit_startime || data.sqxk_ksrq);
 					}
 					//授权结束时间
-					if(data.droit_endtime){
-						$("#datetimeEnd").val(data.droit_endtime);
+					if(data.droit_endtime || data.sqxk_jsrq){
+						$("#datetimeEnd").val(data.droit_endtime || data.sqxk_jsrq);
 					}
 					//许可使用次数
 					if(data.sqxk_sycs){
