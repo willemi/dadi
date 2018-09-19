@@ -1,7 +1,7 @@
 {{~it :m:n}}
 //{{=m.vid_num || 0}}
 <tr>
-	<th class="th">{{!n+1}}</th>
+	<th class="th">{{!m.page}}</th>
 	<td id="{{!m.id}}" class="btn-dile">{{!m.name}}</td>
 	<td>{{!m.designer}}</td>
 	<td>{{!m.number}}</td>                        

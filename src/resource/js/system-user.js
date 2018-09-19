@@ -146,7 +146,7 @@ initData5()
 function initData(page){
     page = page || 1;
     $.ajax({
-        type: "POST",
+        type: "get",
         url: host +"/dadi/user/list",
         data: {
             pageNum: page,
@@ -157,8 +157,11 @@ function initData(page){
         contentType: "application/json;charset=UTF-8",
         success: function(res) {
             if(res && res.status == 1){
-                $(".user-list").append(itemUserListTpl(res.data));
-                //util.pageinator("pageLimit", page, res.page.pageCount, initData);
+                for(var i = 0;i < res.data.length;i++){
+					res.data[i].page = (page-1) * 10 + (i+1);
+				}
+                $(".user-list").html(itemUserListTpl(res.data));
+                util.pageinator("pageLimit", page, res.page.pageCount, initData);
             }else{
                 util.showMsg(res.message)
             }

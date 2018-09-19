@@ -7,7 +7,7 @@
 	<td>{{!m.droit_subject}}</td>
 	<td>{{!m.bdroit_per}}</td>
 	<td>{{!m.ishave_contract}}</td>
-	<td>{{!m.droit_startime}}</td>
+	<td>{{!m.droit_startime}}至{{!m.droit_endtime}}</td>
 	<td>{{!m.droit_mode}}</td>
 	<td>{{!m.sqxk_sydy}}</td>
 	<td>{{!m.sqxk_syyy}}</td>

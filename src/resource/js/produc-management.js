@@ -119,7 +119,8 @@ function initpid(id, $div, type, name,){
 }
 //签约方类型
 initpid(59, $("#modal-contract-party"))
-
+//币种
+initpid(57, $("#currency1"))
 //产品形态
 initpid(18, $(".limit1"), "radio", "limit1")
 //授权权利
@@ -141,7 +142,7 @@ function workslist(page){
 		url: host +"/dadi/product/list",
 		data: {
 			pageNum: page,
-			pageSize: 10
+			pageSize:10
 		},
 		dataType: "json",
 		cache: false,
@@ -149,7 +150,7 @@ function workslist(page){
 		success: function(res) {
 			if(res.status == 1){
 				for(var i = 0;i < res.data.length;i++){
-					res.data[i].page = (page-1) * 10;
+					res.data[i].page = (page-1) * 10 + (i+1);
 				}
 				$(".produc-list").html(producListTpl(res.data));
 				util.pageinator("pageLimit", page, res.page.pageCount, workslistData);
@@ -285,7 +286,7 @@ function xiugai(id){
 					var a = data.fileobj[j]
 					
 					//if("png.jpg.bmp,jpe,jpeg,gif".indexOf(a.file_type) > -1){
-					html += '<tr id="'+ a.id +'"><td class="file-click click-pic" data-url="'+ host +'/file/'+ a.file_url +'">'+ a.file_name +'</td>';
+					html += '<tr id="'+ a.id +'"><td class="file-click click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ a.file_name +'</td>';
 					//}
 					
 					html +=	'	<td>'+ a.file_type +'</td>'+
@@ -321,6 +322,17 @@ function xiugai(id){
 }
 function bindEvents(){
 	var $doc = $(document);
+	$doc.on("click", ".reset-01", function(){
+		cpnews = {};
+		$(".yy-list").html('')
+		$(".news-list").html('')
+		document.getElementById("add-form").reset();
+	})
+	$doc.on("click", ".reset-02", function(){
+		cpnews = {};
+		$(".hl-ht-list").html('')
+		$("#produc-fj-list").html('')
+	})
 	$("#modal-right-info-numb").focus(function(){
 		var outTradeNo="";  //订单号
 		for(var i=0;i<3;i++){
@@ -403,6 +415,7 @@ function bindEvents(){
 					}
 					for(var i = 0;i < data.opus.length;i++){
 						data.opus[i].droit_startime = data.opus[i].droit_startime || data.opus[i].sqxk_ksrq;
+						data.opus[i].droit_endtime = data.opus[i].droit_endtime || data.opus[i].sqxk_jsrq;
 						data.opus[i].droit_mode = data.opus[i].droit_mode || data.droitoldList[i].droit_mode;
 					}
 					data.opus && $(".details-list-a").html(producDatilsCpzpTpl(data.opus));
@@ -973,7 +986,7 @@ function bindEvents(){
 						let sho = '';						
 						html += '<tr id="'+ res.data.id +'">';
 						//if("png.jpg.bmp,jpe,jpeg,gif".indexOf(res.data.file_type) > -1){
-							html += '<td class="file-click click-pic" data-url="'+ host +'/file/'+ res.data.file_url +'">'+ res.data.file_name +'</td>';
+							html += '<td class="file-click click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ res.data.file_name +'</td>';
 						//}
 						
 						html +=	'	<td>'+ res.data.file_type +'</td>'+
@@ -1016,12 +1029,17 @@ function bindEvents(){
 		searchHtList(1)
 		
 	})
+	let type = 1;
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	function searchHtList(page){
 		page = page || 1;
 		$.ajax({
 			type: "GET",
 			url: host +"/dadi/contract/list",
 			data: {
+				type:type,
 				contract_name: NameVal,
 				pageNum: page,
 				pageSize: 10
@@ -1260,6 +1278,7 @@ function bindEvents(){
 			$contractPaymentPlanVal = $("#contract-payment-plan").val(),
 			$contractPaymentMethodVal = $("#contract-payment-method").val(),
 			$contractNotesVal = $("#contract-notes").val(),
+			$currency1 = $("#currency").val(),
 			$contractPartyPistHtml = $("#contract-party-list").html();	
 		//提交
 		if(util.isEmpty($contractNumVal)){
@@ -1301,6 +1320,7 @@ function bindEvents(){
 			invalid_date: $contractInvalidTimeVal,
 			effect_period: $contractYesTimeVal,
 			pay_plan: $contractPaymentPlanVal,
+			currency: $currency1,
 			pay_standard: $contractPaymentMethodVal,
 			contract_explain: $contractNotesVal,
 			sign_ids: sign_ids,

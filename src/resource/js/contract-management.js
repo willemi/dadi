@@ -65,13 +65,16 @@ window.formatContract = function(state){
 			return "无";
 	}
 }
-let contract_name,rel_typ,contract_amount,sign_date,effect_date,invalid_date,contract_subject,pay_type,pay_standard,contract_explain;
+let type = 1,contract_name,rel_typ,contract_amount,sign_date,effect_date,invalid_date,contract_subject,pay_type,pay_standard,contract_explain;
 function bindEvents(){
     var $doc = $(document);
 	util.timepicker("sign_date");
 	util.timepicker("effect_date");
 	util.timepicker("invalid_date");
 
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	$doc.on("click", ".btn-ht", function(){
 		contract_name = $("#ht-name").val();
 		searchHtList(1)		
@@ -97,6 +100,7 @@ function searchHtList(page){
 		url: host +"/dadi/contract/list",
 		data: {
 			rel_typ: rel_typ,
+			type: type,
 			contract_name: contract_name,
 			contract_amount: contract_amount,
 			sign_date: sign_date,
@@ -115,6 +119,9 @@ function searchHtList(page){
 		success: function(res) {
 			if(res && res.status == 1){
 				if(res.data){//搜索
+					for(var i = 0;i < res.data.length;i++){
+						res.data[i].page = (page-1) * 10 + (i+1);
+					}
 					$(".htn-list").html(itemSearchListTpl1(res.data));
 					util.pageinator("pageLimit", page, res.page.pageCount, searchHtList);
 					$("#modal-search").modal("hide");

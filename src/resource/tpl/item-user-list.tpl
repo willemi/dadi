@@ -1,6 +1,6 @@
 {{~it :m:n}}
 <tr>
-	<th class="th" scope="row">{{!n+1}}</th>
+	<th class="th" scope="row">{{!m.page}}</th>
 	<td class="account">{{!m.account}}</td>
 	<td class="sex">{{!m.sex}}</td>
 	<td class="password">{{!m.password}}</td>

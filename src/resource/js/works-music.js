@@ -124,6 +124,21 @@ function initpid(id, $div, type, name,){
 initpid(46, $("#work-type"))
 //题材类型
 initpid(3, $("#theme-type"))
+// setTimeout(() => {
+// 	var a = ["流行","民谣"]
+// 	var op = $("#theme-type option");
+// 	for(var o = 0; o < op.length;o++){
+// 		for(var p = 0;p < a.length;p++){
+// 			if(op.eq(o).val() == a[p]){
+// 				op.eq(o).attr("selected", true)
+// 			}
+// 		}
+// 	}
+// 	$('.selectpicker').selectpicker({
+// 		'selectedText': 'cat'
+// 	});
+// }, 3000);
+
 //作品登机构
 initpid(49, $("#work_registration_institution"))
 //作品登委托机构
@@ -132,6 +147,8 @@ initpid(51, $("#commission_agency"))
 initpid(54, $("#modal-obligee-type"))
 //币种
 initpid(57, $("#modal-obligee-currency"))
+//币种
+initpid(57, $("#currency1"))
 //签约方类型
 initpid(59, $("#modal-contract-party"))
 
@@ -237,6 +254,9 @@ function qlzinit(page){
 	});	
 }
 qlzinit()
+//util.file_url('47b5874c03224e81a31833601a0fee20.docx')
+	
+
 let $cont1 = $(".content-01"),
 	$cont2 = $(".content-02");
 //默认展示列表
@@ -255,6 +275,9 @@ function workslist(page){
 		cache: false,
 		success: function(res) {
 			if(res.status == 1){
+				for(var i = 0;i < res.data.length;i++){
+					res.data[i].page = (page-1) * 10 + (i+1);
+				}
 				$("#works-list").html(worksListTpl(res.data));
 				util.pageinator("pageLimit", page, res.page.pageCount, workslistData);
 			}else{
@@ -272,6 +295,18 @@ function workslistData(page){
 let qlListJson = [];
 function bindEvents(){
 	var $doc = $(document);
+	$doc.on("click", ".reset-01", function(){
+		$(".basics input, .basics select, .basics textarea").val('')
+		qlListJson = [];
+		$(".obligee-list").html('')
+	})
+	$doc.on("click", ".reset-02", function(){
+		$(".source-contract-name").val('')
+		$(".right-news").html('')
+	})
+	$doc.on("click", ".reset-03", function(){
+		$(".enclosure-list").html('')
+	})
 	//合同信息
 	// $doc.on("change", "#right-news", function(){
 	// 	var $this = $(this);
@@ -512,12 +547,17 @@ function bindEvents(){
 		searchHtList(1)
 		
 	})
+	let type = 1;
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	function searchHtList(page){
 		page = page || 1;
 		$.ajax({
 			type: "GET",
 			url: host +"/dadi/contract/list",
 			data: {
+				type:type,
 				contract_name: NameVal,
 				pageNum: page,
 				pageSize: 10
@@ -604,11 +644,12 @@ function bindEvents(){
 		}else{
 			
 			
-			var $tr1 = $(".qlnews-xuanqu tr");
-			var $tr = $(".qlnews-cont tr");
+			var $tr = $(".qlnews-xuanqu tr");
+			var checkbox = $("input[name=a1]");
 			for(var i = 0;i < $tr.length;i++){
-				for(var j = 0;j < $tr1.length;j++){
-					if($tr.eq(i).attr("id") == $tr1.eq(j).attr("id")){
+				for (let j = 0; j < checkbox.length; j++) {
+					var $this = checkbox[j];
+					if($this.checked && $this.value == $tr.eq(i).attr("id")){
 						util.showMsg("不能有重复！");
 						return
 					}
@@ -698,6 +739,7 @@ function bindEvents(){
 			$contractPaymentPlanVal = $("#contract-payment-plan").val(),
 			$contractPaymentMethodVal = $("#contract-payment-method").val(),
 			$contractNotesVal = $("#contract-notes").val(),
+			$currency1 = $("#currency").val(),
 			$contractPartyPistHtml = $("#contract-party-list").html();
 		if($this.hasClass("next-step-01")){
 			//第一步
@@ -767,6 +809,7 @@ function bindEvents(){
 					pay_plan: $contractPaymentPlanVal,
 					pay_standard: $contractPaymentMethodVal,
 					contract_explain: $contractNotesVal,
+					currency: $currency1,
 					sign_ids: sign_ids,
 					droit_ids: droit_ids,
 					files: files
@@ -1499,6 +1542,7 @@ function bindEvents(){
 	
 	
 }
+
 var vId =  util.GetQueryString("id");
 if(vId){
 	xiugai(vId)	
@@ -1538,6 +1582,19 @@ function xiugai(id){
 				$("#work-name").val(data.opus.opus_name);
 				$("#work-type").val(data.opus.opus_type);
 				$("#theme-type").val(data.opus.theme_type);
+				data.opus.theme_type = ["流行","民谣 "]
+				var op = $("#theme-type option");
+				for(var o = 0; o < op.length;o++){
+					for(var p = 0;p < data.opus.theme_type.length;p++){
+						if(op[o].val() == data.opus.theme_type[p]){
+							op.eq(o).attr("selected", true)
+						}
+					}
+				}
+
+
+
+
 				$("#registration_number").val(data.opus.registration_number);
 				$("#work_registration_institution").val(data.opus.work_registration_institution);
 				$("#commission_agency").val(data.opus.commission_agency);

@@ -57,6 +57,9 @@ function initData(page){
 		contentType: "application/json;charset=UTF-8",
 		success: function(res) {
 			if(res.status == 1){
+				for(var i = 0;i < res.data.length;i++){
+					res.data[i].page = (page-1) * 10 + (i+1);
+				}
 				$(".management-list").html(managementList(res.data));
 				util.pageinator("pageLimit", page, res.page.pageCount, initData);
 			}else{
@@ -112,6 +115,12 @@ function xgData(){
 				$("#qlzt").val(res.data.qlzt);
 				$("#mark_contract_id").val(res.data.contract_id);
 
+				$("#yijian_info").val(res.data.yijian_info);
+				$("#fuyi_date input").val(res.data.fuyi_date);
+				$("#bohui_date input").val(res.data.bohui_date);
+				$("#fuyiEnd_date input").val(res.data.fuyiEnd_date);
+				$("#num").val(res.data.num);
+
 				$("#zs-nub").val(res.data.certificate_number)
 				$("#qlzt").val(res.data.droit_sttus)
 
@@ -119,7 +128,7 @@ function xgData(){
 				for(var i = 0;i < res.data.fileobj.length;i++){
 					var f = res.data.fileobj[i];
 				   html += '<tr id="'+ f.id +'">'+
-				   '	<td class=" click-pic" data-url="http://118.26.10.50:9999/file/'+ f.file_url +'">'+ f.file_name +'</td>'+
+				   '	<td class=" click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ f.file_name +'</td>'+
 				   '	<td>'+ f.file_type +'</td>'+
 				   '	<td>'+ f.file_size +'</td>'+
 				   '	<td>'+ f.create_time +'</td>'+
@@ -187,7 +196,8 @@ initpid(21, $(".region"), "radio", "region")
 initpid(22, $(".language"), "radio", "language")
 //使用渠道限制
 initpid(25, $(".mode"), "radio", "mode")
-
+//币种
+initpid(57, $("#currency1"))
 //权利状态
 initpid(92, $("#qlzt"))
 //权利类型
@@ -202,12 +212,16 @@ initpid(98, $("#authorized_area"))
 initpid(100, $("#scope_of_authorization"))
 $("#gengk-added").on("hidden.bs.modal", function() {
 	// $(this).removeData("bs.modal");
-	$("input").val('')
+	$("input, textarea").val('')
 	$("#manage-file").html('')
  });
 //默认展示列表
 function bindEvents(){
 	var $doc = $(document);
+	$doc.on("click", ".reset-01", function(){
+		$("input, textarea").val('')
+		$("#manage-file").html('')
+	})
 	$doc.on("click", ".btn-xgg", function(){
 		listId = $(this).parents("td").attr("id");
 		xgData();
@@ -218,6 +232,10 @@ function bindEvents(){
 	util.timepicker("notice_date");
 	util.timepicker("term_of_validity_start");
 	util.timepicker("term_of_validity_end");
+
+	util.timepicker("fuyi_date");
+	util.timepicker("bohui_date");
+	util.timepicker("fuyiEnd_date");
 
 	util.timepicker("contract-signing-time");
 	util.timepicker("contract-take-time");
@@ -280,15 +298,20 @@ function bindEvents(){
 		searchHtList(1)
 		
 	})
+	let type = 1;
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	function searchHtList(page){
 		page = page || 1;
 			$.ajax({
 				type: "GET",
 				url: host +"/dadi/contract/list",
 				data: {
+					type:type,
 					contract_name: NameVal,
-				pageNum: page,
-				pageSize: 10
+					pageNum: page,
+					pageSize: 10
 				},				
 				dataType: "json",
 				cache: false,
@@ -426,6 +449,7 @@ function bindEvents(){
 			$contractPaymentPlanVal = $("#contract-payment-plan").val(),
 			$contractPaymentMethodVal = $("#contract-payment-method").val(),
 			$contractNotesVal = $("#contract-notes").val(),
+			$currency1 = $("#currency").val(),
 			$contractPartyPistHtml = $("#contract-party-list").html();
 		
 		//提交
@@ -469,6 +493,7 @@ function bindEvents(){
 			invalid_date: $contractInvalidTimeVal,
 			effect_period: $contractYesTimeVal,
 			pay_plan: $contractPaymentPlanVal,
+			currency: $currency1,
 			pay_standard: $contractPaymentMethodVal,
 			contract_explain: $contractNotesVal,
 			sign_ids: sign_ids,
@@ -729,6 +754,11 @@ function bindEvents(){
 			$certificate_number = $("#zs-nub").val(),
 			$droit_sttus = $("#qlzt").val(),
 
+			$yijian_info = $("#yijian_info").val(),
+			$fuyi_date = $("#fuyi_date input").val(),
+			$bohui_date = $("#bohui_date input").val(),
+			$fuyiEnd_date = $("#fuyiEnd_date input").val(),
+			$num = $("#num").val(),
 
 			$contract_idVal = $("#mark_contract_id").val();
 
@@ -800,6 +830,12 @@ function bindEvents(){
 				certificate_number: $certificate_number,
 				droit_sttus: $droit_sttus,
 
+				yijian_info: $yijian_info,
+				fuyi_date: $fuyi_date,
+				bohui_date: $bohui_date,
+				fuyiEnd_date: $fuyiEnd_date,
+				num: $num,
+
 				contract_id: $contract_idVal,
 				files: files
 			}
@@ -860,7 +896,13 @@ function dile(id){
 				'<li><label>代理机构</label><span>'+ res.data.agency +'</span></li>'+
 				'<li><label>产品名称</label><span>'+ res.data.product_name +'</span></li>'+
 				'<li><label>下次缴费时间</label><span>'+ res.data.next_payment_time +'</span></li>'+
-				'<li><label>费用总额</label><span>'+ res.data.total_cost +'</span></li>';
+				'<li><label>费用总额</label><span>'+ res.data.total_cost +'</span></li>'+
+
+				'<li><label>复议时间</label><span>'+ res.data.fuyi_date +'</span></li>'+
+				'<li><label>驳回时间</label><span>'+ res.data.bohui_date +'</span></li>'+
+				'<li><label>复议截止日期</label><span>'+ res.data.fuyiEnd_date +'</span></li>'+
+				'<li><label>当前次数</label><span>'+ res.data.num +'</span></li>'+
+				'<li><label>意见陈述</label><span>'+ res.data.yijian_info +'</span></li>';
 
 				html1 += '<li><label>专利信息</label><span>'+ res.data.is_patent +'</span></li>'+
 				'<li><label>专利号</label><span>'+ res.data.number +'</span></li>'+
@@ -868,7 +910,7 @@ function dile(id){
 				'<li><label>授权单位</label><span>'+ res.data.authorize_unit +'</span></li>'+
 				'<li><label>被授权单位</label><span>'+ res.data.authorized_unit +'</span></li>'+
 				'<li><label>授权形式</label><span>'+ res.data.authorize_type +'</span></li>'+
-				'<li><label>有效期</label><span>'+ res.data.term_of_validity_end +'</span></li>'+
+				'<li><label>有效期</label><span>'+ res.data.term_of_validity_start +'至'+ res.data.term_of_validity_end +'</span></li>'+
 				'<li><label>授权范围</label><span>'+ res.data.scope_of_authorization +'</span></li>'+
 				'<li><label>授权年限</label><span>'+ res.data.authorized_years +'</span></li>'+
 				'<li><label>授权区域</label><span>'+ res.data.authorized_area +'</span></li>'+
@@ -881,7 +923,7 @@ function dile(id){
 				for(var i = 0;i < res.data.fileobj.length;i++){
 					var f = res.data.fileobj[i];
 				   html2 += '<tr id="'+ f.id +'">'+
-				   '	<td class=" click-pic" data-url="http://118.26.10.50:9999/file/'+ f.file_url +'">'+ f.file_name +'</td>'+
+				   '	<td class=" click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ f.file_name +'</td>'+
 				   '	<td>'+ f.file_type +'</td>'+
 				   '	<td>'+ f.file_size +'</td>'+
 				   '	<td>'+ f.create_time +'</td>'+

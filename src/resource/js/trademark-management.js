@@ -40,9 +40,10 @@ window.formatobligee_you = function(state){
 let $stepa = $(".stepa li");
 $("#gengk-added").on("hidden.bs.modal", function() {
    // $(this).removeData("bs.modal");
-   $("input").val('')
+   $("input, textarea").val('')
    $("#manage-file").html('')
 });
+
 function initData(page){
 	page = page || 1;
 	$.ajax({
@@ -57,6 +58,9 @@ function initData(page){
 		contentType: "application/json;charset=UTF-8",
 		success: function(res) {
 			if(res.status == 1){
+				for(var i = 0;i < res.data.length;i++){
+					res.data[i].page = (page-1) * 10 + (i+1);
+				}
 				$(".management-list").html(trademarkList(res.data));
 				util.pageinator("pageLimit", page, res.page.pageCount, initData);
 			}else{
@@ -162,7 +166,7 @@ function xgData(){
 				 for(var i = 0;i < res.data.fileobj.length;i++){
 					 var f = res.data.fileobj[i];
 					html += '<tr id="'+ f.id +'">'+
-					'	<td class=" click-pic" data-url="http://118.26.10.50:9999/file/'+ f.file_url +'">'+ f.file_name +'</td>'+
+					'	<td class=" click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ f.file_name +'</td>'+
 					'	<td>'+ f.file_type +'</td>'+
 					'	<td>'+ f.file_size +'</td>'+
 					'	<td>'+ f.create_time +'</td>'+
@@ -252,7 +256,8 @@ initpid(86, $("#fushen_bohui_group"))
 initpid(78, $("#fushen_agent_institution"))
 //驳回复审群组
 initpid(88, $("#fushen_bohui_fushen_group"))
-
+//币种
+initpid(57, $("#currency1"))
 //商标类别2
 initpid(74, $("#auth_remark_type"))
 //授权形式
@@ -261,6 +266,11 @@ initpid(90, $("#auth_form"))
 //默认展示列表
 function bindEvents(){
 	var $doc = $(document);
+
+	$doc.on("click", ".reset-01", function(){
+		$("input, textarea").val('')
+		$("#manage-file").html('')
+	})
 	$doc.on("click", ".btn-xgg", function(){
 		listId = $(this).parents("td").attr("id");
 		xgData();
@@ -479,10 +489,10 @@ function bindEvents(){
 			util.showMsg("商标类别不能为空！")
 			return
 		}
-		if(util.isEmpty($mark_register_leibie)){
-			util.showMsg("注册类别不能为空！")
-			return
-		}
+		// if(util.isEmpty($mark_register_leibie)){
+		// 	util.showMsg("注册类别不能为空！")
+		// 	return
+		// }
 		if(util.isEmpty($mark_register_type)){
 			util.showMsg("注册类型不能为空！")
 			return
@@ -612,15 +622,20 @@ function bindEvents(){
 		searchHtList(1)
 		
 	})
+	let type = 1;
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	function searchHtList(page){
 		page = page || 1;
 			$.ajax({
 				type: "GET",
 				url: host +"/dadi/contract/list",
 				data: {
+					type:type,
 					contract_name: NameVal,
-				pageNum: page,
-				pageSize: 10
+					pageNum: page,
+					pageSize: 10
 				},				
 				dataType: "json",
 				cache: false,
@@ -888,6 +903,7 @@ function bindEvents(){
 			$contractPaymentPlanVal = $("#contract-payment-plan").val(),
 			$contractPaymentMethodVal = $("#contract-payment-method").val(),
 			$contractNotesVal = $("#contract-notes").val(),
+			$currency1 = $("#currency").val(),
 			$contractPartyPistHtml = $("#contract-party-list").html();
 		
 		//提交
@@ -930,6 +946,7 @@ function bindEvents(){
 			invalid_date: $contractInvalidTimeVal,
 			effect_period: $contractYesTimeVal,
 			pay_plan: $contractPaymentPlanVal,
+			currency: $currency1,
 			pay_standard: $contractPaymentMethodVal,
 			contract_explain: $contractNotesVal,
 			sign_ids: sign_ids,
@@ -1052,7 +1069,7 @@ function dile(id){
 				for(var i = 0;i < res.data.fileobj.length;i++){
 					var f = res.data.fileobj[i];
 				   html6 += '<tr id="'+ f.id +'">'+
-				   '	<td class=" click-pic" data-url="http://118.26.10.50:9999/file/'+ f.file_url +'">'+ f.file_name +'</td>'+
+				   '	<td class=" click-pic" data-url="'+ window.fileUrl(f.file_url) +'">'+ f.file_name +'</td>'+
 				   '	<td>'+ f.file_type +'</td>'+
 				   '	<td>'+ f.file_size +'</td>'+
 				   '	<td>'+ f.create_time +'</td>'+

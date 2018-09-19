@@ -148,21 +148,22 @@
 							<select class="form-control" id="work-type">
 							</select>
 						</div>
-						<div class="form-group col-md-4 col-lg-4 xx">
+						<div class="form-group col-md-4 col-lg-4 xx" style="visibility:hidden">
 							<label for="name">题材类型</label>
 							<select class="form-control" id="theme-type">
 							</select>
 						</div>	
-						<div class="form-group col-md-4 col-lg-4">
+						<!-- <div class="form-group col-md-4 col-lg-4">
 								<label for="name">是否付酬</label>
 								<select class="form-control" id="ispay">
 									<option value="1">是 </option>
 									<option value="0">否 </option>
 								</select>
-						</div>
+						</div> -->
 						<div class="form-group col-md-4 col-lg-4">
 							<label for="exampleInputName2">币种</label>
-							<input type="text" class="form-control" id="currency" placeholder="">
+							<!-- <input type="text" class="form-control" id="currency" placeholder=""> -->
+							<select class="form-control" id="currency"></select>
 						</div>	
 						<div class="form-group col-md-4 col-lg-4">
 								<label for="exampleInputName2">付酬金额</label>
@@ -170,16 +171,16 @@
 						</div>
 						
 						<div class="form-group col-md-4 col-lg-4">
-								<label for="name">权利人</label>
+								<label for="name">作品作者</label>
 								<input type="text" class="form-control" id="new_shouquanren" placeholder="">
 							</div>
 							<div class="form-group col-md-4 col-lg-4">
 								<label for="name">被授权人</label>
 								<input type="text" class="form-control" id="new_beishouquanren" placeholder="">
 							</div>	
-						<div class="form-group col-md-4 col-lg-4 xx">
+						<div class="form-group col-md-4 col-lg-4 xx" style="visibility:hidden">
 							<label for="exampleInputName2">作品时长</label>
-							<input type="text" class="form-control" id="lenght-time" placeholder="">
+							<input type="text" class="form-control" id="lenght-time" placeholder="" value="1">
 						</div>
 						<div class="form-group col-md-4 col-lg-4">
 							<label for="exampleInputName2">发表时间</label>
@@ -190,7 +191,7 @@
 								</span>  
 							</div>  
 						</div>
-						<div class="form-group col-md-4 col-lg-4">
+						<!-- <div class="form-group col-md-4 col-lg-4">
 							<label for="exampleInputName2">创作时间</label>
 							<div class='input-group date' style="min-width: 50%" id='creation-time'>  
 								<input type='text' class="form-control" />  
@@ -198,13 +199,13 @@
 									<span class="glyphicon glyphicon-calendar"></span>  
 								</span>  
 							</div>  
-						</div>
+						</div> -->
 							<!-- <div class="form-group col-md-4 col-lg-4">
 								<label for="exampleInputEmail2">收录专辑</label>
 								<input type="text" class="form-control" id="album" placeholder="">
 							</div> -->
 						<div class="form-group col-md-4 col-lg-4">
-							<label for="name">词曲是否有原件</label>
+							<label for="name">作品是否公开发表</label>
 							<select class="form-control" id="original-script">
 								<option value="1">是</option>
 								<option value="0">否</option>
@@ -212,7 +213,7 @@
 						</div>
 						<div class="form-group col-md-12 col-lg-12">
 							<label for="exampleInputEmail2">版本说明</label>
-							<textarea class="form-control" rows="3" id="version-description"></textarea>
+							<textarea class="form-control" rows="3" id="version-description" placeholder="XXXX年第X版"></textarea>
 						</div>   
 						<div class="form-group col-md-12 col-lg-12">
 							<label for="exampleInputEmail2">作品简介</label>
@@ -249,6 +250,7 @@
 						</div> -->
 					</div>
 					<div class="row row-btn col-md-pull-1">				
+						<button type="button" class="btn btn-primary reset-01">重置</button>	
 						<button type="button" class="btn btn-primary next-step next-step-01">下一步</button>
 					</div>			
 				</div>
@@ -366,6 +368,7 @@
 						<ul id="pageLimit2"></ul>
 					</div>
 					<div class="row row-btn col-md-pull-1">				
+							<button type="button" class="btn btn-primary reset-02">重置</button>
 						<button type="button" class="btn btn-default pre-step">上一步</button>
 						<button type="button" class="btn btn-primary next-step next-step-02">下一步</button>
 					</div>	
@@ -400,6 +403,7 @@
 						<ul id="pageLimit3"></ul>
 					</div>
 					<div class="row row-btn col-md-pull-1">				
+							<button type="button" class="btn btn-primary reset-03">重置</button>		
 						<button type="button" class="btn btn-default pre-step">上一步</button>
 						<button type="button" class="btn btn-primary next-step">提交</button>
 					</div>	

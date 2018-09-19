@@ -111,6 +111,9 @@ function workslist(page){
 		success: function(res) {
 			if(res.status == 1){
 				if(res.data){//搜索
+					for(var i = 0;i < res.data.length;i++){
+						res.data[i].page = (page-1) * 10 + (i+1);
+					}
 					$(".tabel-cont").html(tabelTpl3(res.data));
 					util.pageinator("pageLimit", page, res.page.pageCount, workslist);
 				}else{

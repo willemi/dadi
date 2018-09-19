@@ -208,11 +208,42 @@
                             <div class="form-group col-md-12 col-lg-12">
                                 <label for="exampleInputName2">产品用途</label>
                                 <textarea class="form-control" rows="3"></textarea>
+                            </div> -->
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="exampleInputName2">复议时间</label>
+                                <div class='input-group date' id='fuyi_date'>  
+                                    <input type='text' class="form-control" />  
+                                    <span class="input-group-addon">  
+                                        <span class="glyphicon glyphicon-calendar"></span>  
+                                    </span>  
+                                </div> 
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="exampleInputName2">驳回时间</label>
+                                <div class='input-group date' id='bohui_date'>  
+                                    <input type='text' class="form-control" />  
+                                    <span class="input-group-addon">  
+                                        <span class="glyphicon glyphicon-calendar"></span>  
+                                    </span>  
+                                </div> 
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="exampleInputName2">复议截止日期</label>
+                                <div class='input-group date' id='fuyiEnd_date'>  
+                                    <input type='text' class="form-control" />  
+                                    <span class="input-group-addon">  
+                                        <span class="glyphicon glyphicon-calendar"></span>  
+                                    </span>  
+                                </div> 
+                            </div>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="exampleInputName2">当前次数 </label>
+                                <input type="text" class="form-control" id="num" placeholder="">
                             </div>
                             <div class="form-group col-md-12 col-lg-12">
-                                <label for="exampleInputName2">裁定结果</label>
-                                <textarea class="form-control" rows="3"></textarea>
-                            </div> -->
+                                <label for="exampleInputName2">意见陈述</label>
+                                <textarea style="width:80%;" class="form-control" rows="3" id="yijian_info"></textarea>
+                            </div>
                         </form>                        
                     </div>
                     <div class="tab-pane fade" id="wz">
@@ -324,6 +355,7 @@
                 </div>
 			</div>
 			<div class="modal-footer">				
+                    <button type="button" class="btn btn-primary reset-01">重置</button>	
 				<button type="button" class="btn btn-primary btn-xz-qr">确认</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 			</div>

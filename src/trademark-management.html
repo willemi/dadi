@@ -90,13 +90,13 @@
                     <th class="th">序号</th>
                     <th>商标名称</th>
                     <th>商标类别</th>
-                    <th>注册类别</th>
+                    <th>注册号</th>
                     <th>代理机构</th>
                     <th>代理合同名称</th>
                     <th>合同金额</th>
-                    <th>单项金额</th>
-                    <th>制作团队</th>
-                    <th>联系方式</th>
+                    <th>代理金额</th>
+                    <th>注册人</th>
+                    <th>注册地址</th>
                     <th>操作</th>
                 </tr>
             </thead>
@@ -145,8 +145,8 @@
                                 <select class="form-control" id="mark_type">
                                 </select>
                             </div>
-                            <div class="form-group col-md-4 col-lg-4 xx">
-                                <label for="exampleInputName2">注册类别</label>
+                            <div class="form-group col-md-4 col-lg-4">
+                                <label for="exampleInputName2">注册号</label>
                                 <input type="text" class="form-control" id="mark_register_leibie" placeholder="">
                             </div>
                             <div class="form-group col-md-4 col-lg-4">
@@ -159,7 +159,7 @@
                                 <select class="form-control" id="mark_group">
                                 </select>
                             </div>
-                            <div class="form-group col-md-4 col-lg-4 htname" >
+                            <!-- <div class="form-group col-md-4 col-lg-4 htname" >
                                 <label for="exampleInputName2">代理合同名称</label>
                                 <input type="text" class="form-control ht-name-add" readonly id="mark_agent_contract_name" placeholder="">
                             </div>
@@ -175,21 +175,21 @@
                             <div class="form-group col-md-4 col-lg-4 hrq">
                                 <label for="exampleInputName2">合同日期</label>
                                 <input type="text" class="form-control" disabled id="mark_contract_date" placeholder="">
-                            </div>
+                            </div> -->
                             <div class="form-group col-md-4 col-lg-4">
-                                <label for="exampleInputName2">单项金额</label>
+                                <label for="exampleInputName2">代理金额</label>
                                 <input type="text" class="form-control" id="mark_danxiang_amout" placeholder="">
                             </div>
                             <div class="form-group col-md-4 col-lg-4">
-                                <label for="exampleInputName2">制作团队</label>
+                                <label for="exampleInputName2">注册人</label>
                                 <input type="text" class="form-control" id="mark_zhizuo_team" placeholder="">
                             </div>
                             <div class="form-group col-md-4 col-lg-4">
-                                <label for="exampleInputName2">联系方式</label>
+                                <label for="exampleInputName2">注册地址</label>
                                 <input type="text" class="form-control" id="mark_zhizuo_team_phone" placeholder="">
                             </div>
                             <div class="form-group col-md-4 col-lg-4 xx">
-                                <label for="exampleInputName2">注册类型</label>
+                                <label for="exampleInputName2">是否复议</label>
                                 <select class="form-control" id="mark_register_type">
                                 </select>
                             </div>
@@ -526,7 +526,8 @@
                     </div>
                 </div>
 			</div>
-			<div class="modal-footer">				
+			<div class="modal-footer">	
+                    <button type="button" class="btn btn-primary reset-01">重置</button>			
 				<button type="button" class="btn btn-primary btn-xz-qr">确认</button>
 				<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
 			</div>

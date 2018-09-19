@@ -81,7 +81,11 @@
 			<button class="btn btn-primary col-md-1 col-lg-1" style="float:right;padding:5px 0" type="button" data-toggle="modal" data-target="#modal-search">高级搜索</button>			
 			<div class="right-ht" >					
 				<div class="input-group" style="margin:0 auto;width:500px;">
-					<input type="text" class="form-control" style="width:450px!important;float:left;" id="ht-name" placeholder="请输入查询合同名称">
+					<select id="name-type"  class="form-control" style="height:34px;width: 105px!important;min-width: 105px!important;">
+						<option value="1">合同名称</option>
+						<option value="2">作品名称</option>
+					</select>
+					<input type="text" class="form-control" style="width:320px!important;float:left;" id="ht-name" placeholder="请输入查询合同名称">
 					<span class="input-group-btn" style="width:50px!important;float:left;padding:0" id="ht-name">
 						<button class="btn btn-primary btn-ht btn-adda" style="width:50px!important;margin:0;height:34px;" type="button">搜索</button>
 					</span>

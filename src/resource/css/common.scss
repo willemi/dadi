@@ -844,9 +844,12 @@ li.li-4 {
 	cursor: pointer;
 	text-decoration: underline
 }
-// .btn-adda, .works-list-edit, .worksList-dele, .li-hide, .works-list-sh, .sidebar-menu > li {
-// 	display: none
-// }
+.bootstrap-select button {
+	margin-top:0!important
+}
+.btn-adda, .works-list-edit, .worksList-dele, .li-hide, .works-list-sh, .sidebar-menu > li {
+	display: none
+}
 .show-z-5 .worksList-dele, .show-z-2 .btn-adda, .show-z-3 .works-list-edit, .show-z-4 .works-list-sh, .c-12 li {
 	display: block!important
 }
@@ -1124,7 +1127,7 @@ label {
 	}
 }
 @media (max-width: 1329px) {
-    input[type="text"], input[type="password"], select, .data-w {
+    input[type="text"], input[type="password"], select, .data-w,.bootstrap-select {
 		width:135px!important;
 		min-width:135px!important;
 	}
@@ -1140,7 +1143,7 @@ label {
 	}
 }
 @media (min-width: 1330px) {	
-	input[type="text"], input[type="password"], select, .data-w {
+	input[type="text"], input[type="password"], select, .data-w,.bootstrap-select {
 		width:50%!important;
 		min-width:50%!important;
 	}
@@ -1170,7 +1173,7 @@ label {
 @media (max-width: 1380px) {
 	.cg-added.modal {
 		.modal-dialog {
-			input[type="text"], input[type="password"], select, .data-w {
+			input[type="text"], input[type="password"], select, .data-w,.bootstrap-select {
 				width:135px!important;
 				min-width:135px!important;
 			}

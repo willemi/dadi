@@ -132,6 +132,9 @@ initpid(51, $("#commission_agency"))
 initpid(54, $("#modal-obligee-type"))
 //币种
 initpid(57, $("#modal-obligee-currency"))
+initpid(57, $("#currency"))
+//币种
+initpid(57, $("#currency1"))
 //签约方类型
 initpid(59, $("#modal-contract-party"))
 
@@ -252,6 +255,9 @@ function workslist(page){
 		cache: false,
 		success: function(res) {
 			if(res.status == 1){
+				for(var i = 0;i < res.data.length;i++){
+					res.data[i].page = (page-1) * 10 + (i+1);
+				}
 				$("#works-list").html(worksListTpl(res.data));
 				util.pageinator("pageLimit", page, res.page.pageCount, workslistData);
 			}else{
@@ -269,6 +275,18 @@ function workslistData(page){
 let qlListJson = [];
 function bindEvents(){
 	var $doc = $(document);
+	$doc.on("click", ".reset-01", function(){
+		$(".basics input, .basics select, .basics textarea").val('')
+		qlListJson = [];
+		$(".obligee-list").html('')
+	})
+	$doc.on("click", ".reset-02", function(){
+		$(".source-contract-name").val('')
+		$(".right-news").html('')
+	})
+	$doc.on("click", ".reset-03", function(){
+		$(".enclosure-list").html('')
+	})
 	//合同信息
 	// $doc.on("change", "#right-news", function(){
 	// 	var $this = $(this);
@@ -509,12 +527,17 @@ function bindEvents(){
 		searchHtList(1)
 		
 	})
+	let type = 1;
+	$doc.on("change", "#name-type", function(){
+		type = $(this).val()
+	})
 	function searchHtList(page){
 		page = page || 1;
 		$.ajax({
 			type: "GET",
 			url: host +"/dadi/contract/list",
 			data: {
+				type:type,
 				contract_name: NameVal,
 				pageNum: page,
 				pageSize: 10
@@ -601,11 +624,12 @@ function bindEvents(){
 		}else{
 			
 			
-			var $tr1 = $(".qlnews-xuanqu tr");
-			var $tr = $(".qlnews-cont tr");
+			var $tr = $(".qlnews-xuanqu tr");
+			var checkbox = $("input[name=a1]");
 			for(var i = 0;i < $tr.length;i++){
-				for(var j = 0;j < $tr1.length;j++){
-					if($tr.eq(i).attr("id") == $tr1.eq(j).attr("id")){
+				for (let j = 0; j < checkbox.length; j++) {
+					var $this = checkbox[j];
+					if($this.checked && $this.value == $tr.eq(i).attr("id")){
 						util.showMsg("不能有重复！");
 						return
 					}
@@ -695,6 +719,7 @@ function bindEvents(){
 			$contractPaymentPlanVal = $("#contract-payment-plan").val(),
 			$contractPaymentMethodVal = $("#contract-payment-method").val(),
 			$contractNotesVal = $("#contract-notes").val(),
+			$currency1 = $("#currency").val(),
 			$contractPartyPistHtml = $("#contract-party-list").html();
 		if($this.hasClass("next-step-01")){
 			//第一步
@@ -762,6 +787,7 @@ function bindEvents(){
 					invalid_date: $contractInvalidTimeVal,
 					effect_period: $contractYesTimeVal,
 					pay_plan: $contractPaymentPlanVal,
+					currency: $currency1,
 					pay_standard: $contractPaymentMethodVal,
 					contract_explain: $contractNotesVal,
 					sign_ids: sign_ids,

@@ -83,6 +83,9 @@ function workslist(page){
 		success: function(res) {
 			if(res.status == 1){
 				if(res.data){//搜索
+					for(var i = 0;i < res.data.length;i++){
+						res.data[i].page = (page-1) * 10 + (i+1);
+					}
 					$(".produc-list").html(producListTpl(res.data));
 					util.pageinator("pageLimit", page, res.page.pageCount, workslist);
 				}else{
@@ -178,7 +181,11 @@ function bindEvents(){
 						data.droit[i].shou_quan_ren = data.product.shou_quan_ren;
 						data.droit[i].bei_shou_quan_ren = data.product.bei_shou_quan_ren;
 					}
-
+					for(var i = 0;i < data.opus.length;i++){
+						data.opus[i].droit_startime = data.opus[i].droit_startime || data.opus[i].sqxk_ksrq;
+						data.opus[i].droit_endtime = data.opus[i].droit_endtime || data.opus[i].sqxk_jsrq;
+						data.opus[i].droit_mode = data.opus[i].droit_mode || data.droitoldList[i].droit_mode;
+					}
 					$(".details-list-a").html(producDatilsCpzpTpl(data.opus));
 					$(".details-list-b").html(producDatilsCpTpl(data.droit));
 					$(".details-list-c").html(itemProducHtTpl(data.contract));

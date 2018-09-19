@@ -1,7 +1,7 @@
 {
-  "name": "dadixm",
+  "name": "dadi",
   "version": "1.0.0",
-  "description": "dadixm",
+  "description": "dadi",
   "main": "、",
   "scripts": {
     "dev": "webpack --mode development --colors --display-error-details --display-modules",

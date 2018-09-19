@@ -1,8 +1,8 @@
 <!--选择合同 作品 modal-choiceContracts-->
-<div class="modal fade ipadd  ipadd-look" style="display:bock;" id="modal-choiceContracts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade ipadd  ipadd-look" style="display:blck;" id="modal-choiceContracts" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	<div class="modal-dialog ">
 		<div class="modal-content">
-			<div class="modal-header">
+			<div class="modal-header">				
 				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
 				<h4 class="modal-title" id="myModalLabel">选择合同</h4>
 			</div>
@@ -11,8 +11,12 @@
 					<div class="col-md-12 col-lg-12">
 						<div class="row">
 							<div class="col-md-9 col-lg-9" style="margin-left:12%;padding:20px 0;">
-								<div class="input-group" style="margin:0 auto">
-									<input type="text" class="form-control" id="ht-name" placeholder="请输入查询合同名称">
+								<div class="input-group" style="margin:0 auto;width:617px;">
+									<select id="name-type"  class="form-control" style="display: inline-block;float:left;height:34px;width: 105px!important;min-width: 105px!important;">
+										<option value="1">合同名称</option>
+										<option value="2">作品名称</option>
+									</select>
+									<input style="width: 450px!important;min-width: 450px!important;" type="text" class="form-control" id="ht-name" placeholder="请输入查询合同名称">
 									<span class="input-group-btn">
 										<button class="btn btn-primary btn-ht" type="button">搜索</button>
 									</span>

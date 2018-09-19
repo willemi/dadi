@@ -1,7 +1,7 @@
 {{~it :m:n}}
 //{{=m.vid_num || 0}}
 <tr id="{{!m.id}}">
-	<th scope="row">{{!n+1}}</th>
+	<th scope="row">{{!m.page}}</th>
 	<td>{{!m.contract_code}}</td>
 	<td><a class="btn-details aaa" data-id="{{=m.id}}">{{!m.contract_name}}</a></td>
 	<td>{{!m.contract_amount}}</td>

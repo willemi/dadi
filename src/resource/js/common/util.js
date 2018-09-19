@@ -2,18 +2,28 @@
 import '../../css/bootstrap-datetimepicker.min.css';
 import 'bootstrap/dist/js/bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
-
+// import '../../css/bootstrap-select.min.css';
 import './sidebar-menu';
 import '../../css/sidebar-menu.css';
 import '../../css/font-awesome.css';
 $.sidebarMenu($('.sidebar-menu'))
-
+// const selectpicker = require('./bootstrap-select.js');
 //window.host = "http://"+ (location.host || "118.26.10.50:9999");
 window.host = "http://118.26.10.50:9999";
 const datetimepicker = require("./bootstrap-datetimepicker.min.js");
 const moment = require('./bootstrap-datetimepicker.zh-CN.js');
+
 const bootstrapPaginator = require("./bootstrap-paginator.js");
 const easyUpload = require("./easyUpload.js")
+// $(window).on('load', function () {
+// 	$('.selectpicker').selectpicker({
+// 		'selectedText': 'cat'
+// 	});
+// 	// $('.selectpicker').selectpicker('hide');
+// 	});
+
+
+
 let util = {};
 $('.modal').on('hidden.bs.modal', function () {
 	// 执行一些动作...
@@ -22,8 +32,16 @@ $('.modal').on('hidden.bs.modal', function () {
 	}
 })
 window.fileUrl = function(url){
-	console.log(url)
-	return host +'/file/'+ url;
+	var index = url.lastIndexOf("."),
+		str = url.substring(index + 1, url.length),
+		str = str.toLowerCase();
+		let fileUrlgo;
+	if(str == 'png' || str == 'jpg' || str == 'jpeg' || str == 'gif' || str == 'txt'){
+		fileUrlgo = host +'/file/'+ url
+	}else{
+		fileUrlgo = host +"/dadi/opus/yulan?file_url="+ url
+	}
+	return fileUrlgo;
 }
 if (window.console) {
 	let log = window.console.log;
@@ -49,7 +67,24 @@ Date.prototype.Format = function(fmt) {
 			fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
 	return fmt;
 };
-
+// util.file_url = (str) => {
+// 	$.ajax({
+// 		type: "get",
+// 		url: host +"/dadi/opus/yulan",
+// 		data: {
+// 			file_url: str
+// 		},
+// 		dataType: "json",
+// 		cache: false,
+// 		contentType: "application/json;charset=UTF-8",
+// 		success: function(res) {
+// 			console.log(res)
+// 		},
+// 		error: function(error){
+// 			util.showMsg("error")
+// 		}
+// 	});
+// }
 util.isEmpty = (str) => {
 	str = $.trim(str)
 	return (str === '' || typeof(str) === 'undefined' || str === null) ? true : false;

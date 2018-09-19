@@ -1,6 +1,6 @@
 {{~it :m:n}}
 <tr id="{{!m.id}}">
-	<th scope="row">{{!n+1}}</th>
+	<th scope="row">{{!m.page}}</th>
 	<td id="{{!m.id}}" class="btn-dile">{{!m.contract_id}}</td>
 	<th>{{!m.realmname_address}}</th>
 	<th>{{!m.owner}}</th>
